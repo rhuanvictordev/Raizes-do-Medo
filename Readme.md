@@ -1,0 +1,1 @@
+Raízes do medo será desenvolvido pela Blind Gaming.
