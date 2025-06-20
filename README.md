@@ -7,7 +7,7 @@ Raízes do Medo está sendo desenvolvido pela Blind Gaming.
 - Será necessário possuir uma IDE que tenha suporte a Python, a linguagem de programação Python e a biblioteca pygame instalados;
 
 ## Instalação
-- Abra o terminal no diretório que você deseja e rode este comando: git clone https://github.com/rhuanvictordev/Raizes-do-Medo.git 
+- Abra o terminal no diretório que você deseja e rode este comando: `git clone https://github.com/rhuanvictordev/Raizes-do-Medo.git` 
 
 ## Executando o jogo
 
