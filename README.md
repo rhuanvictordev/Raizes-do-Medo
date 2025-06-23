@@ -27,4 +27,4 @@ Abrindo o arquivo jogo.py e clicando no botão de Run File.
 
 ## Mais informações
 
-Caso tenha mais uma alguma dúvida acesse o site da Blind Gaming para entra em conosco: https://blind-gaming.vercel.app
+Caso tenha mais uma alguma dúvida acesse o site da Blind Gaming para entrar em contato conosco: https://blind-gaming.vercel.app
