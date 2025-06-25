@@ -25,7 +25,8 @@ class GerenciadorDeSom:
             "som_n_menos": pygame.mixer.Sound("som_narrador_menos.mp3"),
             "som_n_mais": pygame.mixer.Sound("som_narrador_mais.mp3"),
             "som_m_menos": pygame.mixer.Sound("som_narrador_musica_menos.mp3"),
-            "som_m_mais": pygame.mixer.Sound("som_narrador_musica_mais.mp3")
+            "som_m_mais": pygame.mixer.Sound("som_narrador_musica_mais.mp3"),
+            "som_sair": pygame.mixer.Sound("som_narrador_sair.mp3")
         }
 
         self.canais = {
@@ -34,8 +35,8 @@ class GerenciadorDeSom:
         }
 
         self.volumes = {
-            "musica": 0.5,
-            "narrador": 0.5
+            "musica": 0.6,
+            "narrador": 0.4
         }
 
 
@@ -45,6 +46,7 @@ class GerenciadorDeSom:
             self.canais[canal].play(self.sons[nome_som], loops=loops)
             vol = self.volumes.get(canal, 1.0)
             self.canais[canal].set_volume(vol)
+
 
     def ajustar_volume(self, canal, delta):
         if canal in self.canais and canal in self.volumes:
@@ -131,6 +133,9 @@ class Jogo:
             pygame.display.update()
             pygame.time.delay(15)
 
+    
+
+
     def processar_eventos(self):
         
         for event in pygame.event.get():
@@ -153,7 +158,7 @@ class Jogo:
                         self.sons.parar_narrador()
                         self.sons.tocar("menu", "narrador")
 
-                    if event.key == pygame.K_1:
+                    elif event.key == pygame.K_1:
                         self.estado = "jogo"
                         
                     elif event.key == pygame.K_2:
@@ -169,6 +174,9 @@ class Jogo:
                         self.sons.tocar('menu', 'narrador')
 
                     elif event.key == pygame.K_5:
+                        self.sons.tocar("som_sair", "narrador")
+                        duracao = self.sons.sons["som_sair"].get_length() * 1000  # capta a duracao do som de sair
+                        pygame.time.delay(int(duracao))  # espera a duracao do som de sair antes de sair
                         pygame.quit()
                         sys.exit()
 
@@ -179,11 +187,14 @@ class Jogo:
                     if event.key == pygame.K_ESCAPE:
                         self.estado = "menu"
 
-                    elif event.key == pygame.K_1:
+                    if event.key == pygame.K_1:
                         self.estado = "config_audio"
                         
-                    elif event.key == pygame.K_2:
+                    if event.key == pygame.K_2:
                         self.estado = "config_controle"
+
+                    if event.key == pygame.K_LCTRL:
+                        self.sons.tocar('config', 'narrador')
 
                 #CREDITOS
                 elif self.estado == "creditos":
@@ -235,7 +246,7 @@ class Jogo:
                     if event.key == pygame.K_1:
                         print("controle 1")
 
-                    elif event.key == pygame.K_2:
+                    if event.key == pygame.K_2:
                         print("controle 2")
 
 
