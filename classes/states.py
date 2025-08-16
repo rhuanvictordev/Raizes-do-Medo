@@ -1,5 +1,6 @@
 import pygame
 import sys
+import prop as arquivoConfig
 
 
 # ------------------- Estado Base -------------------
@@ -28,7 +29,8 @@ class EstadoMenu(Estado):
         elif event.key == pygame.K_1:
             self.jogo.mudar_estado("novo_jogo")
         elif event.key == pygame.K_2:
-            self.jogo.mudar_estado("continuar")
+            print("continuando jogo")
+            # self.jogo.mudar_estado("continuar")
         elif event.key == pygame.K_3:
             self.jogo.mudar_estado("config")
         elif event.key == pygame.K_4:
@@ -80,15 +82,9 @@ class EstadoPausa(Estado):
         self.jogo.telas["pausa"].resetar_som()
 
 class EstadoContinuar(Estado):
-    def exibir(self):
-        self.jogo.telas["continuar"].exibir(self.jogo.sons)
+    cenaSalva = arquivoConfig.get("checkpoint")
+    print(cenaSalva)
 
-    def processar_eventos(self, event):
-        if event.key == pygame.K_ESCAPE:
-            self.jogo.mudar_estado("menu")
-
-    def resetar_som(self):
-        self.jogo.telas["continuar"].resetar_som()
 
 class EstadoCreditos(Estado):
     def exibir(self):
@@ -137,19 +133,23 @@ class EstadoConfigAudio(Estado):
         elif event.key == pygame.K_1:
             self.jogo.sons.parar_narrador()
             self.jogo.sons.tocar("som_n_menos", "narrador")
-            self.jogo.sons.ajustar_volume("narrador", -0.1)
+            narrador_vol = self.jogo.sons.ajustar_volume("narrador", -0.1)
+            arquivoConfig.set("narrador", narrador_vol)
         elif event.key == pygame.K_2:
             self.jogo.sons.parar_narrador()
             self.jogo.sons.tocar("som_n_mais", "narrador")
-            self.jogo.sons.ajustar_volume("narrador", 0.1)
+            narrador_vol = self.jogo.sons.ajustar_volume("narrador", 0.1)
+            arquivoConfig.set("narrador", narrador_vol)
         elif event.key == pygame.K_3:
             self.jogo.sons.parar_narrador()
             self.jogo.sons.tocar("som_m_menos", "narrador")
-            self.jogo.sons.ajustar_volume("musica", -0.1)
+            musica_vol = self.jogo.sons.ajustar_volume("musica", -0.1)
+            arquivoConfig.set("musica", musica_vol)
         elif event.key == pygame.K_4:
             self.jogo.sons.parar_narrador()
             self.jogo.sons.tocar("som_m_mais", "narrador")
-            self.jogo.sons.ajustar_volume("musica", 0.1)
+            musica_vol = self.jogo.sons.ajustar_volume("musica", 0.1)
+            arquivoConfig.set("musica", musica_vol)
 
     def resetar_som(self):
         self.jogo.telas["config_audio"].resetar_som()

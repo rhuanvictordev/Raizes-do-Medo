@@ -1,5 +1,6 @@
 import pygame
 from classes.game import Jogo
+import prop as config
 
 # Inicialização
 pygame.init()
@@ -15,4 +16,4 @@ if __name__ == "__main__":
         jogo.processar_eventos()
         jogo.atualizar_tela()
         pygame.display.flip()
-        clock.tick(60)
+        clock.tick(260)
