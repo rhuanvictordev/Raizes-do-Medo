@@ -1,6 +1,5 @@
 import pygame
 from classes.game import Jogo
-import prop as config
 
 # Inicialização
 pygame.init()

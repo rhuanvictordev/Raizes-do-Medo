@@ -1,4 +1,8 @@
-ARQUIVO = "config.properties"
+from pathlib import Path
+
+root_path = Path(__file__).resolve().parent.parent
+
+ARQUIVO = root_path / "configs" / "config.properties"
 
 def lerPropriedades():
     propriedades = {}
@@ -20,6 +24,6 @@ def set(chave, valor):
     return ('Registro no arquivo: '+ chave + " Valor: " + get(chave))
 
 # pegar uma propriedade específica
-def get(chave):
+def get(chave, default='1.0'):
     props = lerPropriedades()
-    return props.get(chave)
+    return props.get(chave, default)

@@ -1,6 +1,6 @@
 from pathlib import Path
 import pygame
-import prop as arquivoConfig
+import service.prop as arquivoConfig
 
 
 class GerenciadorDeSom:

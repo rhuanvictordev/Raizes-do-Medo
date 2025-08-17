@@ -1,6 +1,6 @@
 import pygame
 import sys
-import prop as arquivoConfig
+import service.prop as arquivoConfig
 
 
 # ------------------- Estado Base -------------------
