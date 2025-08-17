@@ -1,5 +1,6 @@
 from pathlib import Path
 import pygame
+import service.prop as arquivoConfig
 
 
 class GerenciadorDeSom:
@@ -28,9 +29,10 @@ class GerenciadorDeSom:
         }
 
         self.volumes = {
-            "musica": 0.6,
-            "narrador": 0.4
+            "musica": float(arquivoConfig.get("musica")),
+            "narrador": float(arquivoConfig.get("narrador"))
         }
+
 
     def tocar(self, nome_som, canal, loop=False):
         if not self.canais[canal].get_busy():
@@ -45,6 +47,7 @@ class GerenciadorDeSom:
             novo_volume = max(0.0, min(1.0, novo_volume))
             self.volumes[canal] = novo_volume
             self.canais[canal].set_volume(novo_volume)
+            return (f"{novo_volume:.2f}")
             print(f"Volume de '{canal}' ajustado para {novo_volume:.2f}")
 
     def parar_musica(self):

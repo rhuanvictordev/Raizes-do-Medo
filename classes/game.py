@@ -45,6 +45,7 @@ class Jogo:
             self.estado_atual_nome = estadoNovo
             self.estado = self.estados[estadoNovo]
             self.estado.resetar_som()
+    
 
     def atualizar_tela(self):
         self.estado.exibir()
@@ -78,3 +79,5 @@ class Jogo:
             TELA.blit(fade, (0, 0))
             pygame.display.update()
             pygame.time.delay(15)
+
+    
