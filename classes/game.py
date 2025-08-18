@@ -7,6 +7,8 @@ class Jogo:
     def __init__(self):
         root_path = Path(__file__).resolve().parent.parent
 
+        self.ultimaCena = "menu"
+
         self.sons = GerenciadorDeSom()
         self.telas = {
             "menu": Tela(root_path / "assets/images/menu.png", "menu"),

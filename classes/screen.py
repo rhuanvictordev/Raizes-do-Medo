@@ -19,3 +19,4 @@ class Tela:
 
     def resetar_som(self):
         self.som_tocou = False
+        

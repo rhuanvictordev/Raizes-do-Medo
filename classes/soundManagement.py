@@ -31,8 +31,8 @@ class GerenciadorDeSom:
         }
 
         self.volumes = {
-            "musica": float(arquivoConfig.get("musica")),
-            "narrador": float(arquivoConfig.get("narrador"))
+            "musica": float(arquivoConfig.getConfig("musica")),
+            "narrador": float(arquivoConfig.getConfig("narrador"))
         }
 
 
