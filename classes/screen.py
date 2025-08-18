@@ -2,7 +2,7 @@ import pygame
 from classes.soundManagement import GerenciadorDeSom
 
 
-LARGURA, ALTURA = 640, 480
+LARGURA, ALTURA = 1920, 1080
 TELA = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption("Raízes do medo")
 class Tela:

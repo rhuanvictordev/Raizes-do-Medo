@@ -8,14 +8,7 @@ class Estado:
     def __init__(self, jogo):
         self.jogo = jogo
 
-    def exibir(self):
-        pass
-
-    def processar_eventos(self, event):
-        pass
-
-    def resetar_som(self):
-        pass
+    
 
 # ------------------- Estados -------------------
 class EstadoMenu(Estado):
@@ -24,18 +17,18 @@ class EstadoMenu(Estado):
 
     def processar_eventos(self, event):
         self.jogo.sons.parar_narrador()
-        if event.key == pygame.K_ESCAPE or event.key == pygame.K_LCTRL:
+        if event.key == pygame.K_LCTRL:
             self.jogo.sons.tocar("menu", "narrador")
         elif event.key == pygame.K_1:
-            self.jogo.mudar_estado("novo_jogo")
+            self.jogo.mudar_estado("cena01")
         elif event.key == pygame.K_2:
-            print("continuando jogo")
+            self.jogo.mudar_estado(arquivoConfig.get("tela"))
             # self.jogo.mudar_estado("continuar")
         elif event.key == pygame.K_3:
             self.jogo.mudar_estado("config")
         elif event.key == pygame.K_4:
             self.jogo.mudar_estado("creditos")
-        elif event.key == pygame.K_5:
+        elif event.key == pygame.K_ESCAPE:
             self.jogo.sons.tocar("som_sair", "narrador")
             pygame.time.delay(int(self.jogo.sons.sons["som_sair"].get_length() * 1000))
             pygame.quit()
@@ -84,7 +77,6 @@ class EstadoPausa(Estado):
 class EstadoContinuar(Estado):
     cenaSalva = arquivoConfig.get("checkpoint")
     print(cenaSalva)
-
 
 class EstadoCreditos(Estado):
     def exibir(self):
@@ -172,3 +164,48 @@ class EstadoConfigControle(Estado):
 
     def resetar_som(self):
         self.jogo.telas["config_controle"].resetar_som()
+
+class Cena01(Estado):
+
+    def exibir(self):
+        self.jogo.telas["cena01"].exibir(self.jogo.sons)
+    
+    def processar_eventos(self, event):
+        if event.key == pygame.K_ESCAPE:
+            self.jogo.sons.parar_narrador()
+            self.jogo.sons.parar_musica()
+            self.jogo.mudar_estado("menu")
+        elif event.key == pygame.K_1:
+            self.jogo.sons.parar_narrador()
+            self.jogo.sons.parar_musica()
+            self.jogo.mudar_estado("cena02")
+        elif event.key == pygame.K_2:
+            self.jogo.sons.parar_narrador()
+            self.jogo.sons.parar_musica()
+            self.jogo.mudar_estado("cena02")
+
+    def resetar_som(self):
+        self.jogo.telas["cena01"].resetar_som()
+
+
+class Cena02(Estado):
+
+    def exibir(self):
+        self.jogo.telas["cena02"].exibir(self.jogo.sons)
+    
+    def processar_eventos(self, event):
+        if event.key == pygame.K_ESCAPE:
+            self.jogo.sons.parar_narrador()
+            self.jogo.sons.parar_musica()
+            self.jogo.mudar_estado("menu")
+        elif event.key == pygame.K_1:
+            self.jogo.sons.parar_narrador()
+            self.jogo.sons.parar_musica()
+            self.jogo.mudar_estado("menu")
+        elif event.key == pygame.K_2:
+            self.jogo.sons.parar_narrador()
+            self.jogo.sons.parar_musica()
+            self.jogo.mudar_estado("menu")
+
+    def resetar_som(self):
+        self.jogo.telas["cena02"].resetar_som()
