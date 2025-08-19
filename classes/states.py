@@ -19,6 +19,8 @@ class EstadoMenu(Estado):
         if event.key == pygame.K_LCTRL:
             self.jogo.sons.tocar("menu", "narrador")
         elif event.key == pygame.K_1:
+            self.jogo.sons.parar_narrador()
+            self.jogo.sons.parar_musica()
             self.jogo.mudar_estado("cena01")
 
         elif event.key == pygame.K_2:
@@ -165,6 +167,7 @@ class EstadoConfigControle(Estado):
 class Cena01(Estado):
 
     def exibir(self):
+        self.jogo.sons.parar_musica()
         self.jogo.telas["cena01"].exibir(self.jogo.sons)
         arquivoConfig.setSave("tela", "cena01")
         self.jogo.ultimaCena = "cena01"
@@ -172,19 +175,15 @@ class Cena01(Estado):
     def processar_eventos(self, event):
         if event.key == pygame.K_ESCAPE:
             self.jogo.sons.parar_narrador()
-            self.jogo.sons.parar_musica()
             self.jogo.mudar_estado("menu")
         elif event.key == pygame.K_1:
             self.jogo.sons.parar_narrador()
-            self.jogo.sons.parar_musica()
             self.jogo.mudar_estado("cena02")
         elif event.key == pygame.K_2:
             self.jogo.sons.parar_narrador()
-            self.jogo.sons.parar_musica()
             self.jogo.mudar_estado("cena02")
         elif event.key == pygame.K_p:
             self.jogo.sons.parar_narrador()
-            self.jogo.sons.parar_musica()
             self.jogo.mudar_estado("pausa")
 
     def resetar_som(self):
@@ -193,6 +192,7 @@ class Cena01(Estado):
 class Cena02(Estado):
 
     def exibir(self):
+        self.jogo.sons.parar_musica()
         self.jogo.telas["cena02"].exibir(self.jogo.sons)
         arquivoConfig.setSave("tela", "cena02")
         self.jogo.ultimaCena = "cena02"
@@ -200,20 +200,118 @@ class Cena02(Estado):
     def processar_eventos(self, event):
         if event.key == pygame.K_ESCAPE:
             self.jogo.sons.parar_narrador()
-            self.jogo.sons.parar_musica()
             self.jogo.mudar_estado("menu")
         elif event.key == pygame.K_1:
             self.jogo.sons.parar_narrador()
-            self.jogo.sons.parar_musica()
-            self.jogo.mudar_estado("menu")
+            self.jogo.mudar_estado("cena03")
         elif event.key == pygame.K_2:
             self.jogo.sons.parar_narrador()
-            self.jogo.sons.parar_musica()
-            self.jogo.mudar_estado("menu")
+            self.jogo.mudar_estado("cena03")
         elif event.key == pygame.K_p:
             self.jogo.sons.parar_narrador()
-            self.jogo.sons.parar_musica()
             self.jogo.mudar_estado("pausa")
 
     def resetar_som(self):
         self.jogo.telas["cena02"].resetar_som()
+
+
+class Cena03(Estado):
+
+    def exibir(self):
+        self.jogo.sons.parar_musica()
+        self.jogo.telas["cena03"].exibir(self.jogo.sons)
+        arquivoConfig.setSave("tela", "cena03")
+        self.jogo.ultimaCena = "cena03"
+    
+    def processar_eventos(self, event):
+        if event.key == pygame.K_ESCAPE:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("menu")
+        elif event.key == pygame.K_1:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("cena04")
+        elif event.key == pygame.K_2:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("cena04")
+        elif event.key == pygame.K_p:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("pausa")
+
+    def resetar_som(self):
+        self.jogo.telas["cena03"].resetar_som()
+
+
+class Cena04(Estado):
+
+    def exibir(self):
+        self.jogo.sons.parar_musica()
+        self.jogo.telas["cena04"].exibir(self.jogo.sons)
+        arquivoConfig.setSave("tela", "cena04")
+        self.jogo.ultimaCena = "cena04"
+    
+    def processar_eventos(self, event):
+        if event.key == pygame.K_ESCAPE:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("menu")
+        elif event.key == pygame.K_1:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("cena05")
+        elif event.key == pygame.K_2:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("cena05")
+        elif event.key == pygame.K_p:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("pausa")
+
+    def resetar_som(self):
+        self.jogo.telas["cena04"].resetar_som()
+
+class Cena05(Estado):
+
+    def exibir(self):
+        self.jogo.sons.parar_musica()
+        self.jogo.telas["cena05"].exibir(self.jogo.sons)
+        arquivoConfig.setSave("tela", "cena05")
+        self.jogo.ultimaCena = "cena05"
+    
+    def processar_eventos(self, event):
+        if event.key == pygame.K_ESCAPE:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("menu")
+        elif event.key == pygame.K_1:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("cena06")
+        elif event.key == pygame.K_2:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("cena06")
+        elif event.key == pygame.K_p:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("pausa")
+
+    def resetar_som(self):
+        self.jogo.telas["cena05"].resetar_som()
+
+class Cena06(Estado):
+
+    def exibir(self):
+        self.jogo.sons.parar_musica()
+        self.jogo.telas["cena06"].exibir(self.jogo.sons)
+        arquivoConfig.setSave("tela", "cena06")
+        self.jogo.ultimaCena = "cena06"
+    
+    def processar_eventos(self, event):
+        if event.key == pygame.K_ESCAPE:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("menu")
+        elif event.key == pygame.K_1:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("cena01")
+        elif event.key == pygame.K_2:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("cena01")
+        elif event.key == pygame.K_p:
+            self.jogo.sons.parar_narrador()
+            self.jogo.mudar_estado("pausa")
+
+    def resetar_som(self):
+        self.jogo.telas["cena06"].resetar_som()

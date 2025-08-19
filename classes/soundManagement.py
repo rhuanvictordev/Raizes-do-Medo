@@ -22,7 +22,11 @@ class GerenciadorDeSom:
             "som_m_mais": pygame.mixer.Sound(root_path / "assets/sounds/s_n_musica_mais.mp3"),
             "som_sair": pygame.mixer.Sound(root_path / "assets/sounds/s_n_sair.mp3"),
             "cena01": pygame.mixer.Sound(root_path / "assets/sounds/cena01.mp3"),
-            "cena02": pygame.mixer.Sound(root_path / "assets/sounds/cena02.mp3")
+            "cena02": pygame.mixer.Sound(root_path / "assets/sounds/cena02.mp3"),
+            "cena03": pygame.mixer.Sound(root_path / "assets/sounds/cena03.mp3"),
+            "cena04": pygame.mixer.Sound(root_path / "assets/sounds/cena04.mp3"),
+            "cena05": pygame.mixer.Sound(root_path / "assets/sounds/cena05.mp3"),
+            "cena06": pygame.mixer.Sound(root_path / "assets/sounds/cena06.mp3")
         }
 
         self.canais = {
