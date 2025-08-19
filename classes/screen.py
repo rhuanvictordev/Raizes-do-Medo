@@ -1,9 +1,13 @@
 import pygame
 from classes.soundManagement import GerenciadorDeSom
 
+# precisa inicializar primeiro pra conseguir colocar em tela cheia
+pygame.init()
 
-LARGURA, ALTURA = 1920, 1080
-TELA = pygame.display.set_mode((LARGURA, ALTURA))
+info = pygame.display.Info()
+LARGURA, ALTURA = info.current_w, info.current_h
+
+TELA = pygame.display.set_mode((LARGURA, ALTURA), pygame.FULLSCREEN)
 pygame.display.set_caption("Raízes do medo")
 class Tela:
     def __init__(self, caminho_img, som_nome=None):
