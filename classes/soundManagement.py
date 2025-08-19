@@ -12,7 +12,7 @@ class GerenciadorDeSom:
             "menu": pygame.mixer.Sound(root_path / "assets/sounds/s_n_menu.mp3"),
             "config": pygame.mixer.Sound(root_path / "assets/sounds/s_n_configuracoes.mp3"),
             "pausa": pygame.mixer.Sound(root_path / "assets/sounds/s_n_pausa.mp3"),
-            "novo_jogo": pygame.mixer.Sound(root_path / "assets/sounds/s_n_novo_jogo.mp3"),
+            "novo_jogo": pygame.mixer.Sound(root_path / "assets/sounds/cena01.mp3"),
             "config_audio": pygame.mixer.Sound(root_path / "assets/sounds/s_n_c_audio.mp3"),
             "config_controle": pygame.mixer.Sound(root_path / "assets/sounds/s_n_c_controles.mp3"),
             "som_creditos": pygame.mixer.Sound(root_path / "assets/sounds/s_n_creditos.mp3"),
@@ -20,7 +20,13 @@ class GerenciadorDeSom:
             "som_n_mais": pygame.mixer.Sound(root_path / "assets/sounds/s_n_mais.mp3"),
             "som_m_menos": pygame.mixer.Sound(root_path / "assets/sounds/s_n_musica_menos.mp3"),
             "som_m_mais": pygame.mixer.Sound(root_path / "assets/sounds/s_n_musica_mais.mp3"),
-            "som_sair": pygame.mixer.Sound(root_path / "assets/sounds/s_n_sair.mp3")
+            "som_sair": pygame.mixer.Sound(root_path / "assets/sounds/s_n_sair.mp3"),
+            "cena01": pygame.mixer.Sound(root_path / "assets/sounds/cena01.mp3"),
+            "cena02": pygame.mixer.Sound(root_path / "assets/sounds/cena02.mp3"),
+            "cena03": pygame.mixer.Sound(root_path / "assets/sounds/cena03.mp3"),
+            "cena04": pygame.mixer.Sound(root_path / "assets/sounds/cena04.mp3"),
+            "cena05": pygame.mixer.Sound(root_path / "assets/sounds/cena05.mp3"),
+            "cena06": pygame.mixer.Sound(root_path / "assets/sounds/cena06.mp3")
         }
 
         self.canais = {
@@ -29,8 +35,8 @@ class GerenciadorDeSom:
         }
 
         self.volumes = {
-            "musica": float(arquivoConfig.get("musica")),
-            "narrador": float(arquivoConfig.get("narrador"))
+            "musica": float(arquivoConfig.getConfig("musica")),
+            "narrador": float(arquivoConfig.getConfig("narrador"))
         }
 
 

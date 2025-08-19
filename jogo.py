@@ -15,4 +15,4 @@ if __name__ == "__main__":
         jogo.processar_eventos()
         jogo.atualizar_tela()
         pygame.display.flip()
-        clock.tick(260)
+        clock.tick(60)
