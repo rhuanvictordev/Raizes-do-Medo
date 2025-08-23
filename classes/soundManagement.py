@@ -13,7 +13,7 @@ class GerenciadorDeSom:
             "menu": pygame.mixer.Sound(root_path / "assets/sounds/s_n_menu.mp3"),
             "config": pygame.mixer.Sound(root_path / "assets/sounds/s_n_configuracoes.mp3"),
             "pausa": pygame.mixer.Sound(root_path / "assets/sounds/s_n_pausa.mp3"),
-            "novo_jogo": pygame.mixer.Sound(root_path / "assets/sounds/cena01.mp3"),
+            "novo_jogo": pygame.mixer.Sound(root_path / "assets/sounds/s_n_novo_jogo.mp3"),
             "config_audio": pygame.mixer.Sound(root_path / "assets/sounds/s_n_c_audio.mp3"),
             "config_controle": pygame.mixer.Sound(root_path / "assets/sounds/s_n_c_controles.mp3"),
             "config_controle_alterado": pygame.mixer.Sound(root_path / "assets/sounds/s_n_c_alterado.mp3"),
@@ -53,7 +53,7 @@ class GerenciadorDeSom:
             vol = self.volumes.get(canal, 1.0)
             self.canais[canal].set_volume(vol)
 
-    def tocar_ruido(self, loop=False):
+    def tocar_ruido(self, loop=True):
         if not self.canais["ruido"].get_busy():
             loops = -1 if loop else 0
             self.canais["ruido"].play(self.sons["ruido"], loops=loops)
@@ -72,3 +72,6 @@ class GerenciadorDeSom:
 
     def parar_narrador(self):
         self.canais["narrador"].stop()
+
+    def parar_ruido(self):
+        self.canais["ruido"].stop()
