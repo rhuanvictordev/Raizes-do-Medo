@@ -19,6 +19,8 @@ class Jogo:
             "pausa": Tela(root_path / "assets/images/pausa.png", "pausa"),
             "config_audio": Tela(root_path / "assets/images/config_audio.png", "config_audio"),
             "config_controle": Tela(root_path / "assets/images/config_controle.png", "config_controle"),
+            "config_controle_tecla1": Tela(root_path / "assets/images/config_controle1.png", "config_controle_tecla1"),
+            "config_controle_tecla2": Tela(root_path / "assets/images/config_controle2.png", "config_controle_tecla2"),
             "cena01": Tela(root_path / "assets/images/cena01.png", "cena01"),
             "cena02": Tela(root_path / "assets/images/cena02.png", "cena02"),
             "cena03": Tela(root_path / "assets/images/cena03.png", "cena03"),
@@ -34,6 +36,8 @@ class Jogo:
             "config": EstadoConfig(self),
             "config_audio": EstadoConfigAudio(self),
             "config_controle": EstadoConfigControle(self),
+            "config_controle_tecla1": EstadoConfigControleTecla1(self),
+            "config_controle_tecla2": EstadoConfigControleTecla2(self),
             "pausa": EstadoPausa(self),
             "cena01": Cena01(self),
             "cena02": Cena02(self),
@@ -72,7 +76,7 @@ class Jogo:
                 self.sons.parar_narrador()
                 pygame.quit()
                 sys.exit()
-            elif event.type == pygame.KEYDOWN:
+            elif event.type in (pygame.KEYDOWN, pygame.MOUSEMOTION, pygame.MOUSEBUTTONDOWN, pygame.MOUSEBUTTONUP):
                 self.estado.processar_eventos(event)
 
     def transicao_com_fade(self, de_estado, para_estado):
