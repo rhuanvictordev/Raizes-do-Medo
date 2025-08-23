@@ -10,8 +10,8 @@ info = pygame.display.Info()
 ## para ajustar em tela cheia: TELA = pygame.display.set_mode((LARGURA, ALTURA), pygame.FULLSCREEN)
 
 
-LARGURA, ALTURA = 1200,750
-TELA = pygame.display.set_mode((LARGURA, ALTURA))
+LARGURA, ALTURA = info.current_w, info.current_h
+TELA = pygame.display.set_mode((LARGURA, ALTURA), pygame.FULLSCREEN)
 
 pygame.event.set_grab(True)   # trava ou nao o mouse dentro da janela
 pygame.mouse.set_visible(True)  # esconde ou exibe o cursor
