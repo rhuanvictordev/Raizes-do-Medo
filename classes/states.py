@@ -45,6 +45,7 @@ class EstadoMenu(Estado):
 
 class EstadoNovoJogo(Estado):
     def exibir(self):
+        self.jogo.sons.tocar_ruido()
         self.jogo.telas["novo_jogo"].exibir(self.jogo.sons)
         time.sleep(3)
         self.jogo.mudar_estado("cena01")
@@ -53,6 +54,7 @@ class EstadoNovoJogo(Estado):
 
 class EstadoPausa(Estado):
     def exibir(self):
+        self.jogo.sons.parar_ruido()
         self.jogo.telas["pausa"].exibir(self.jogo.sons)
         self.jogo.sons.tocar("musica", "musica", True)
 
@@ -63,6 +65,7 @@ class EstadoPausa(Estado):
                 self.jogo.sons.parar_musica()
                 self.jogo.telas["pausa"].resetar_som()
                 self.jogo.mudar_estado(self.jogo.ultimaCena)
+                self.jogo.sons.tocar_ruido()
             elif event.key in (pygame.K_LCTRL, pygame.K_RCTRL):
                 self.jogo.sons.parar_narrador()
                 self.jogo.sons.tocar("pausa", "narrador")
@@ -237,9 +240,10 @@ class Cena01(Estado):
         self.jogo.telas["cena01"].exibir(self.jogo.sons)
         arquivo.setSave("tela", "cena01")
         self.jogo.ultimaCena = "cena01"
+        
     
     def processar_eventos(self, event):
-        self.jogo.sons.parar_narrador()
+        
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self.jogo.sons.parar_narrador()
@@ -249,7 +253,7 @@ class Cena01(Estado):
                 self.jogo.mudar_estado("cena02")
             elif event.key == int(arquivo.getConfig("tecla2", "50")):
                 self.jogo.sons.parar_narrador()
-                self.jogo.mudar_estado("cena02")
+                self.jogo.mudar_estado("cena03")
             elif event.key == pygame.K_p:
                 self.jogo.sons.parar_narrador()
                 self.jogo.mudar_estado("pausa")
@@ -274,10 +278,10 @@ class Cena02(Estado):
                 self.jogo.mudar_estado("menu")
             elif event.key == int(arquivo.getConfig("tecla1", "49")):
                 self.jogo.sons.parar_narrador()
-                self.jogo.mudar_estado("cena03")
+                self.jogo.mudar_estado("cena04")
             elif event.key == int(arquivo.getConfig("tecla2", "50")):
                 self.jogo.sons.parar_narrador()
-                self.jogo.mudar_estado("cena03")
+                self.jogo.mudar_estado("cena02")
             elif event.key == pygame.K_p:
                 self.jogo.sons.parar_narrador()
                 self.jogo.mudar_estado("pausa")

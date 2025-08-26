@@ -11,22 +11,22 @@ class Jogo:
 
         self.sons = GerenciadorDeSom()
         self.telas = {
-            "menu": Tela(root_path / "assets/images/menu.png", "menu"),
-            "config": Tela(root_path / "assets/images/config.png", "config"),
-            "novo_jogo": Tela(root_path / "assets/images/novo_jogo.png", "novo_jogo"),
-            "continuar": Tela(root_path / "assets/images/novo_jogo.png", ""),
-            "creditos": Tela(root_path / "assets/images/creditos.png", "som_creditos"),
-            "pausa": Tela(root_path / "assets/images/pausa.png", "pausa"),
-            "config_audio": Tela(root_path / "assets/images/config_audio.png", "config_audio"),
-            "config_controle": Tela(root_path / "assets/images/config_controle.png", "config_controle"),
-            "config_controle_tecla1": Tela(root_path / "assets/images/config_controle1.png", "config_controle_tecla1"),
-            "config_controle_tecla2": Tela(root_path / "assets/images/config_controle2.png", "config_controle_tecla2"),
-            "cena01": Tela(root_path / "assets/images/cena01.png", "cena01"),
-            "cena02": Tela(root_path / "assets/images/cena02.png", "cena02"),
-            "cena03": Tela(root_path / "assets/images/cena03.png", "cena03"),
-            "cena04": Tela(root_path / "assets/images/cena04.png", "cena04"),
-            "cena05": Tela(root_path / "assets/images/cena05.png", "cena05"),
-            "cena06": Tela(root_path / "assets/images/cena06.png", "cena06")
+            "menu": Tela(root_path / "assets/images/menu/menu.png", "menu"),
+            "config": Tela(root_path / "assets/images/menu/config.png", "config"),
+            "novo_jogo": Tela(root_path / "assets/images/menu/novo_jogo.png", "novo_jogo"),
+            "continuar": Tela(root_path / "assets/images/menu/novo_jogo.png", ""),
+            "creditos": Tela(root_path / "assets/images/menu/creditos.png", "som_creditos"),
+            "pausa": Tela(root_path / "assets/images/menu/pausa.png", "pausa"),
+            "config_audio": Tela(root_path / "assets/images/menu/config_audio.png", "config_audio"),
+            "config_controle": Tela(root_path / "assets/images/menu/config_controle.png", "config_controle"),
+            "config_controle_tecla1": Tela(root_path / "assets/images/menu/config_controle1.png", "config_controle_tecla1"),
+            "config_controle_tecla2": Tela(root_path / "assets/images/menu/config_controle2.png", "config_controle_tecla2"),
+            "cena01": Tela(root_path / "assets/images/cenas/cena01.png", "cena01"),
+            "cena02": Tela(root_path / "assets/images/cenas/cena02.png", "cena02"),
+            "cena03": Tela(root_path / "assets/images/cenas/cena03.png", "cena03"),
+            "cena04": Tela(root_path / "assets/images/cenas/cena04.png", "cena04"),
+            "cena05": Tela(root_path / "assets/images/cenas/cena05.png", "cena05"),
+            "cena06": Tela(root_path / "assets/images/cenas/cena06.png", "cena06")
         }
         self.estados = {
             "menu": EstadoMenu(self),
