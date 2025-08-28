@@ -21,12 +21,12 @@ class Jogo:
             "config_controle": Tela(root_path / "assets/images/menu/config_controle.png", "config_controle"),
             "config_controle_tecla1": Tela(root_path / "assets/images/menu/config_controle1.png", "config_controle_tecla1"),
             "config_controle_tecla2": Tela(root_path / "assets/images/menu/config_controle2.png", "config_controle_tecla2"),
-            "cena01": Tela(root_path / "assets/images/cenas/cena01.png", "cena01"),
-            "cena02": Tela(root_path / "assets/images/cenas/cena02.png", "cena02"),
-            "cena03": Tela(root_path / "assets/images/cenas/cena03.png", "cena03"),
-            "cena04": Tela(root_path / "assets/images/cenas/cena04.png", "cena04"),
-            "cena05": Tela(root_path / "assets/images/cenas/cena05.png", "cena05"),
-            "cena06": Tela(root_path / "assets/images/cenas/cena06.png", "cena06")
+            "inicio": Tela(root_path / "assets/images/cenas/inicio.png", "inicio"),
+            "entrou_casa": Tela(root_path / "assets/images/cenas/entrou_casa.png", "entrou_casa"),
+            "checou_fora": Tela(root_path / "assets/images/cenas/checou_fora.png", "checou_fora"),
+            "abriu_gaveta": Tela(root_path / "assets/images/cenas/abriu_gaveta.png", "abriu_gaveta"),
+            "caixa_suja": Tela(root_path / "assets/images/cenas/caixa_suja.png", "caixa_suja"),
+            "telha_quebrada": Tela(root_path / "assets/images/cenas/telha_quebrada.png", "telha_quebrada")
         }
         self.estados = {
             "menu": EstadoMenu(self),
@@ -39,12 +39,14 @@ class Jogo:
             "config_controle_tecla1": EstadoConfigControleTecla1(self),
             "config_controle_tecla2": EstadoConfigControleTecla2(self),
             "pausa": EstadoPausa(self),
-            "cena01": Cena01(self),
-            "cena02": Cena02(self),
-            "cena03": Cena03(self),
-            "cena04": Cena04(self),
-            "cena05": Cena05(self),
-            "cena06": Cena06(self)
+
+            
+            "inicio": Inicio(self),
+            "entrou_casa": EntrouCasa(self),
+            "checou_fora": ChecouFora(self),
+            "abriu_gaveta": AbriuGaveta(self),
+            "caixa_suja": CaixaSuja(self),
+            "telha_quebrada": TelhaQuebrada(self)
         }
 
         self.estado_atual_nome = "menu"

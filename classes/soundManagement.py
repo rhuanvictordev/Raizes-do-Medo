@@ -26,12 +26,12 @@ class GerenciadorDeSom:
             "som_m_menos": pygame.mixer.Sound(root_path / "assets/sounds/s_n_musica_menos.mp3"),
             "som_m_mais": pygame.mixer.Sound(root_path / "assets/sounds/s_n_musica_mais.mp3"),
             "som_sair": pygame.mixer.Sound(root_path / "assets/sounds/s_n_sair.mp3"),
-            "cena01": pygame.mixer.Sound(root_path / "assets/sounds/cena01.mp3"),
-            "cena02": pygame.mixer.Sound(root_path / "assets/sounds/cena02.mp3"),
-            "cena03": pygame.mixer.Sound(root_path / "assets/sounds/cena03.mp3"),
-            "cena04": pygame.mixer.Sound(root_path / "assets/sounds/cena04.mp3"),
-            "cena05": pygame.mixer.Sound(root_path / "assets/sounds/cena05.mp3"),
-            "cena06": pygame.mixer.Sound(root_path / "assets/sounds/cena06.mp3")
+            "inicio": pygame.mixer.Sound(root_path / "assets/sounds/inicio.mp3"),
+            "entrou_casa": pygame.mixer.Sound(root_path / "assets/sounds/entrou_casa.mp3"),
+            "checou_fora": pygame.mixer.Sound(root_path / "assets/sounds/checou_fora.mp3"),
+            "abriu_gaveta": pygame.mixer.Sound(root_path / "assets/sounds/abriu_gaveta.mp3"),
+            "caixa_suja": pygame.mixer.Sound(root_path / "assets/sounds/caixa_suja.mp3"),
+            "telha_quebrada": pygame.mixer.Sound(root_path / "assets/sounds/telha_quebrada.mp3")
         }
 
         self.canais = {
