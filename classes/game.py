@@ -11,26 +11,33 @@ class Jogo:
 
         self.sons = GerenciadorDeSom()
         self.telas = {
-            "menu": Tela(root_path / "assets/images/menu.png", "menu"),
-            "config": Tela(root_path / "assets/images/config.png", "config"),
-            "novo_jogo": Tela(root_path / "assets/images/novo_jogo.png", "novo_jogo"),
-            "continuar": Tela(root_path / "assets/images/novo_jogo.png", ""),
-            "creditos": Tela(root_path / "assets/images/creditos.png", "som_creditos"),
-            "pausa": Tela(root_path / "assets/images/pausa.png", "pausa"),
-            "config_audio": Tela(root_path / "assets/images/config_audio.png", "config_audio"),
-            "config_controle": Tela(root_path / "assets/images/config_controle.png", "config_controle"),
-            "config_controle_tecla1": Tela(root_path / "assets/images/config_controle1.png", "config_controle_tecla1"),
-            "config_controle_tecla2": Tela(root_path / "assets/images/config_controle2.png", "config_controle_tecla2"),
-            "cena01": Tela(root_path / "assets/images/cena01.png", "cena01"),
-            "cena02": Tela(root_path / "assets/images/cena02.png", "cena02"),
-            "cena03": Tela(root_path / "assets/images/cena03.png", "cena03"),
-            "cena04": Tela(root_path / "assets/images/cena04.png", "cena04"),
-            "cena05": Tela(root_path / "assets/images/cena05.png", "cena05"),
-            "cena06": Tela(root_path / "assets/images/cena06.png", "cena06")
+             
+             ## MENU
+            "menu": Tela(root_path / "assets/images/menu/menu.png", "menu"),
+            "config": Tela(root_path / "assets/images/menu/config.png", "config"),
+            "continuar": Tela(root_path / "assets/images/menu/novo_jogo.png", ""),
+            "creditos": Tela(root_path / "assets/images/menu/creditos.png", "som_creditos"),
+            "pausa": Tela(root_path / "assets/images/menu/pausa.png", "pausa"),
+            "config_audio": Tela(root_path / "assets/images/menu/config_audio.png", "config_audio"),
+            "config_controle": Tela(root_path / "assets/images/menu/config_controle.png", "config_controle"),
+            "config_controle_tecla1": Tela(root_path / "assets/images/menu/config_controle1.png", "config_controle_tecla1"),
+            "config_controle_tecla2": Tela(root_path / "assets/images/menu/config_controle2.png", "config_controle_tecla2"),
+
+            ## CENAS
+            "NOVO_JOGO": Tela(root_path / "assets/images/menu/C_INICIAL.png", "NOVO_JOGO"),
+            "C_ACORDAR": Tela(root_path / "assets/images/menu/C_ACORDAR.png", "C_ACORDAR"),
+
+            "C1": Tela(root_path / "assets/images/cenas/C1.png", "C1"),
+            "A": Tela(root_path / "assets/images/cenas/A.png", "A"),
+            "B": Tela(root_path / "assets/images/cenas/B.png", "B"),
+            
         }
         self.estados = {
+
+            ## MENU
             "menu": EstadoMenu(self),
-            "novo_jogo": EstadoNovoJogo(self),
+            "NOVO_JOGO": EstadoNovoJogo(self),
+            "C_ACORDAR": C_ACORDAR(self),
             "continuar": EstadoContinuar(self),
             "creditos": EstadoCreditos(self),
             "config": EstadoConfig(self),
@@ -39,12 +46,11 @@ class Jogo:
             "config_controle_tecla1": EstadoConfigControleTecla1(self),
             "config_controle_tecla2": EstadoConfigControleTecla2(self),
             "pausa": EstadoPausa(self),
-            "cena01": Cena01(self),
-            "cena02": Cena02(self),
-            "cena03": Cena03(self),
-            "cena04": Cena04(self),
-            "cena05": Cena05(self),
-            "cena06": Cena06(self)
+
+            ## CENAS
+            "C1": C1(self),
+            "A": A(self),
+            "B": B(self),
         }
 
         self.estado_atual_nome = "menu"
@@ -79,6 +85,7 @@ class Jogo:
             elif event.type in (pygame.KEYDOWN, pygame.MOUSEMOTION, pygame.MOUSEBUTTONDOWN, pygame.MOUSEBUTTONUP):
                 self.estado.processar_eventos(event)
 
+
     def transicao_com_fade(self, de_estado, para_estado):
         if de_estado not in self.telas or para_estado not in self.telas:
             return
@@ -97,5 +104,3 @@ class Jogo:
             TELA.blit(fade, (0, 0))
             pygame.display.update()
             pygame.time.delay(1)
-
-    

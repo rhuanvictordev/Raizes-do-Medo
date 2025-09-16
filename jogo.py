@@ -6,7 +6,9 @@ pygame.init()
 pygame.display.set_caption("Raízes do medo")
 FONTE = pygame.font.SysFont('calibri', 28)
 clock = pygame.time.Clock()
-arquivoConfig.setConfig("narrador", "0.1")
+volumeNarrador = arquivoConfig.getConfig("narrador")
+if volumeNarrador == None or volumeNarrador == "0.0":
+    arquivoConfig.setConfig("narrador", "0.1")
 
 # ------------------- Execução -------------------
 if __name__ == "__main__":
