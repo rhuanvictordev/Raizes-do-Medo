@@ -30,6 +30,10 @@ class Jogo:
             "C1": Tela(root_path / "assets/images/cenas/C1.png", "C1"),
             "A": Tela(root_path / "assets/images/cenas/A.png", "A"),
             "B": Tela(root_path / "assets/images/cenas/B.png", "B"),
+            "A2": Tela(root_path / "assets/images/cenas/A2.png", "A2"),
+            "AB": Tela(root_path / "assets/images/cenas/AB.png", "AB"),
+            "BA": Tela(root_path / "assets/images/cenas/BA.png", "BA"),
+            "B2": Tela(root_path / "assets/images/cenas/B2.png", "B2"),
             
         }
         self.estados = {
@@ -51,6 +55,10 @@ class Jogo:
             "C1": C1(self),
             "A": A(self),
             "B": B(self),
+            "A2": A2(self),
+            "AB": AB(self),
+            "BA": BA(self),
+            "B2": B2(self),
         }
 
         self.estado_atual_nome = "menu"
