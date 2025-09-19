@@ -26,6 +26,24 @@ class GerenciadorDeSom:
             "som_m_mais": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_musica_mais.mp3"),
             "som_sair": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_sair.mp3"),
 
+            "novo": pygame.mixer.Sound(root_path / "assets/sounds/menu/novo.mp3"),
+            "continuar": pygame.mixer.Sound(root_path / "assets/sounds/menu/continuar.mp3"),
+            "configuracoes": pygame.mixer.Sound(root_path / "assets/sounds/menu/config.mp3"),
+            "creditos": pygame.mixer.Sound(root_path / "assets/sounds/menu/creditos.mp3"),
+            "sair": pygame.mixer.Sound(root_path / "assets/sounds/menu/sair.mp3"),
+            "narrador_ativado": pygame.mixer.Sound(root_path / "assets/sounds/menu/narrador_ativado.mp3"),
+            "narrador_desativado": pygame.mixer.Sound(root_path / "assets/sounds/menu/narrador_desativado.mp3"),
+            "config_audio_rapido": pygame.mixer.Sound(root_path / "assets/sounds/menu/config_audio.mp3"),
+            "config_controles": pygame.mixer.Sound(root_path / "assets/sounds/menu/config_controles.mp3"),
+            "voltar": pygame.mixer.Sound(root_path / "assets/sounds/menu/voltar.mp3"),
+            "diminuir_narrador": pygame.mixer.Sound(root_path / "assets/sounds/menu/diminuir_narrador.mp3"),
+            "aumentar_narrador": pygame.mixer.Sound(root_path / "assets/sounds/menu/aumentar_narrador.mp3"),
+            "diminuir_musica": pygame.mixer.Sound(root_path / "assets/sounds/menu/diminuir_musica.mp3"),
+            "aumentar_musica": pygame.mixer.Sound(root_path / "assets/sounds/menu/aumentar_musica.mp3"),
+            "ativar_desativar_narrador": pygame.mixer.Sound(root_path / "assets/sounds/menu/ativar_desativar_narrador.mp3"),
+            
+
+
             "NOVO_JOGO": pygame.mixer.Sound(root_path / "assets/sounds/menu/C_INICIAL.mp3"), # INICIANDO UM NOVO JOGO -> VOCE SE CHAMA JOAO
             "C_ACORDAR": pygame.mixer.Sound(root_path / "assets/sounds/menu/C_ACORDAR.mp3"), # VOCE ACORDA EM SUA CASA
             
@@ -42,7 +60,8 @@ class GerenciadorDeSom:
         self.canais = {
             "musica": pygame.mixer.Channel(0),
             "narrador": pygame.mixer.Channel(1),
-            "ruido": pygame.mixer.Channel(2)
+            "ruido": pygame.mixer.Channel(2),
+            "cena": pygame.mixer.Channel(3),
         }
 
         self.volumes = {
@@ -53,10 +72,13 @@ class GerenciadorDeSom:
 
     def tocar(self, nome_som, canal, loop=False):
         if not self.canais[canal].get_busy():
-            loops = -1 if loop else 0
-            self.canais[canal].play(self.sons[nome_som], loops=loops)
-            vol = self.volumes.get(canal, 1.0)
-            self.canais[canal].set_volume(vol)
+            if canal == "narrador" and arquivoConfig.getConfig("narradorativo") == "false":
+                return
+            else:
+                loops = -1 if loop else 0
+                self.canais[canal].play(self.sons[nome_som], loops=loops)
+                vol = self.volumes.get(canal, 1.0)
+                self.canais[canal].set_volume(vol)
 
     def tocar_ruido(self, loop=True):
         if not self.canais["ruido"].get_busy():

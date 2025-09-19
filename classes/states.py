@@ -4,6 +4,8 @@ import service.prop as arquivo
 import time
 
 
+
+
 # ------------------- Estado Base -------------------
 class Estado:
     def __init__(self, jogo):
@@ -13,7 +15,15 @@ class Estado:
 
 class EstadoMenu(Estado):
     def exibir(self):
+        botoes = [
+            (0.388, 0.600, 0.410, 0.062, ""),
+            (0.378, 0.672, 0.410, 0.062, ""),
+            (0.380, 0.742, 0.410, 0.063, ""),
+            (0.409, 0.815, 0.360, 0.064, ""),
+            (0.427, 0.886, 0.285, 0.060, ""),
+        ]
         self.jogo.telas["menu"].exibir(self.jogo.sons)
+        self.jogo.telas["menu"].carregarBotoes(botoes)
         self.jogo.sons.parar_ruido()
 
     def processar_eventos(self, event):
@@ -38,8 +48,41 @@ class EstadoMenu(Estado):
                 pygame.time.delay(int(self.jogo.sons.sons["som_sair"].get_length() * 1000))
                 pygame.quit()
                 sys.exit()
-        elif event.type in (pygame.MOUSEMOTION, pygame.MOUSEBUTTONDOWN):
+        elif event.type == pygame.MOUSEMOTION:
             self.jogo.sons.tocar("menu", "narrador")
+            pos_mouse = pygame.mouse.get_pos()
+            botao = self.jogo.telas["menu"].verificar_clique(pos_mouse)
+            if botao == 0:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("novo", "narrador")
+            elif botao == 1:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("continuar", "narrador")
+            elif botao == 2:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("configuracoes", "narrador")
+            elif botao == 3:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("creditos", "narrador")
+            elif botao == 4:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("sair", "narrador")
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            pos_mouse = pygame.mouse.get_pos()
+            botao = self.jogo.telas["menu"].verificar_clique(pos_mouse)
+            if botao == 0:
+                self.jogo.mudar_estado("NOVO_JOGO")
+            elif botao == 1:
+                self.jogo.mudar_estado(arquivo.getSave("tela"))
+            elif botao == 2:
+                self.jogo.mudar_estado("config")
+            elif botao == 3:
+                self.jogo.mudar_estado("creditos")
+            elif botao == 4:
+                self.jogo.sons.tocar("som_sair", "narrador")
+                pygame.time.delay(int(self.jogo.sons.sons["som_sair"].get_length() * 1000))
+                pygame.quit()
+                sys.exit()
 
     def resetar_som(self):
         self.jogo.telas["menu"].resetar_som()
@@ -52,7 +95,7 @@ class EstadoNovoJogo(Estado):
 
         # mantém a cena visível por 18s
         inicio = time.time()
-        while time.time() - inicio < 4:
+        while time.time() - inicio < 18:
             pygame.event.pump()      # mantém pygame vivo
             pygame.event.clear()     # esvazia fila (ignora teclas/cliques)
             time.sleep(0.02)         # espera em pequenos passos
@@ -74,7 +117,7 @@ class C_ACORDAR(Estado):
 
         # mantém a cena visível por 20s
         inicio = time.time()
-        while time.time() - inicio < 4:
+        while time.time() - inicio < 20:
             pygame.event.pump()      # mantém pygame vivo
             pygame.event.clear()     # esvazia fila (ignora teclas/cliques)
             time.sleep(0.02)         # espera em pequenos passos
@@ -90,7 +133,11 @@ class C_ACORDAR(Estado):
 class EstadoPausa(Estado):
     def exibir(self):
         self.jogo.sons.parar_ruido()
+        botoes = [
+            (0.320, 0.200, 0.370, 0.180, "")
+        ]
         self.jogo.telas["pausa"].exibir(self.jogo.sons)
+        self.jogo.telas["pausa"].carregarBotoes(botoes)
         self.jogo.sons.tocar("musica", "musica", True)
 
     def processar_eventos(self, event):
@@ -104,9 +151,12 @@ class EstadoPausa(Estado):
             elif event.key in (pygame.K_LCTRL, pygame.K_RCTRL):
                 self.jogo.sons.parar_narrador()
                 self.jogo.sons.tocar("pausa", "narrador")
-        elif event.type in (pygame.MOUSEMOTION, pygame.MOUSEBUTTONDOWN):
-            self.jogo.sons.tocar("pausa", "narrador")
-
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            self.jogo.sons.parar_narrador()
+            self.jogo.sons.parar_musica()
+            self.jogo.telas["pausa"].resetar_som()
+            self.jogo.mudar_estado(self.jogo.ultimaCena)
+            self.jogo.sons.tocar_ruido()
     def resetar_som(self):
         self.jogo.telas["pausa"].resetar_som()
 
@@ -135,7 +185,13 @@ class EstadoCreditos(Estado):
 
 class EstadoConfig(Estado):
     def exibir(self):
+        botoes = [
+            (0.400, 0.595, 0.210, 0.080, ""),
+            (0.400, 0.685, 0.210, 0.080, ""),
+            (0.400, 0.765, 0.210, 0.080, ""),
+        ]
         self.jogo.telas["config"].exibir(self.jogo.sons)
+        self.jogo.telas["config"].carregarBotoes(botoes)
 
     def processar_eventos(self, event):
         self.jogo.sons.parar_narrador()
@@ -148,15 +204,46 @@ class EstadoConfig(Estado):
                 self.jogo.mudar_estado("config_controle")
             elif event.key in (pygame.K_LCTRL, pygame.K_RCTRL):
                 self.jogo.sons.tocar("config", "narrador")
-        elif event.type in (pygame.MOUSEMOTION, pygame.MOUSEBUTTONDOWN):
+        
+        elif event.type == pygame.MOUSEMOTION:
             self.jogo.sons.tocar("config", "narrador")
+            pos_mouse = pygame.mouse.get_pos()
+            botao = self.jogo.telas["config"].verificar_clique(pos_mouse)
+            if botao == 0:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("config_audio_rapido", "narrador")
+            elif botao == 1:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("config_controles", "narrador")
+            elif botao == 2:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("voltar", "narrador")
+        
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            pos_mouse = pygame.mouse.get_pos()
+            botao = self.jogo.telas["config"].verificar_clique(pos_mouse)
+            if botao == 0:
+                self.jogo.mudar_estado("config_audio")
+            elif botao == 1:
+                self.jogo.mudar_estado("config_controle")
+            elif botao == 2:
+                self.jogo.mudar_estado("menu")
+            
 
     def resetar_som(self):
         self.jogo.telas["config"].resetar_som()
 
 class EstadoConfigAudio(Estado):
     def exibir(self):
+        botoes = [
+            (0.110, 0.755, 0.070, 0.113, ""),
+            (0.234, 0.760, 0.070, 0.113, ""),
+            (0.690, 0.757, 0.070, 0.113, ""),
+            (0.800, 0.757, 0.070, 0.113, ""),
+            (0.469, 0.756, 0.070, 0.113, ""),
+        ]
         self.jogo.telas["config_audio"].exibir(self.jogo.sons)
+        self.jogo.telas["config_audio"].carregarBotoes(botoes)
 
     def processar_eventos(self, event):
         self.jogo.sons.parar_narrador()
@@ -168,22 +255,66 @@ class EstadoConfigAudio(Estado):
             elif event.key == pygame.K_1:
                 self.jogo.sons.tocar("som_n_menos", "narrador")
                 self.jogo.sons.ajustar_volume("narrador", -0.1)
-                
             elif event.key == pygame.K_2:
                 self.jogo.sons.tocar("som_n_mais", "narrador")
                 self.jogo.sons.ajustar_volume("narrador", 0.1)
-                
             elif event.key == pygame.K_3:
                 self.jogo.sons.tocar("som_m_menos", "narrador")
                 self.jogo.sons.ajustar_volume("musica", -0.1)
-                
             elif event.key == pygame.K_4:
                 self.jogo.sons.tocar("som_m_mais", "narrador")
                 self.jogo.sons.ajustar_volume("musica", 0.1)
-                
-        elif event.type in (pygame.MOUSEMOTION, pygame.MOUSEBUTTONDOWN):
+            elif event.key == pygame.K_5:
+                self.alternarNarrador()
+            
+        elif event.type == pygame.MOUSEMOTION:
             self.jogo.sons.tocar("config_audio", "narrador")
-        
+            pos_mouse = pygame.mouse.get_pos()
+            botao = self.jogo.telas["config_audio"].verificar_clique(pos_mouse)
+            if botao == 0:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("diminuir_narrador", "narrador")
+            elif botao == 1:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("aumentar_narrador", "narrador")
+            elif botao == 2:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("diminuir_musica", "narrador")
+            elif botao == 3:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("aumentar_musica", "narrador")
+            elif botao == 4:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("ativar_desativar_narrador", "narrador")
+
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            pos_mouse = pygame.mouse.get_pos()
+            botao = self.jogo.telas["config_audio"].verificar_clique(pos_mouse)
+            if botao == 0:
+                self.jogo.sons.tocar("som_n_menos", "narrador")
+                self.jogo.sons.ajustar_volume("narrador", -0.1)
+            elif botao == 1:
+                self.jogo.sons.tocar("som_n_mais", "narrador")
+                self.jogo.sons.ajustar_volume("narrador", 0.1)
+            elif botao == 2:
+                self.jogo.sons.tocar("som_m_menos", "narrador")
+                self.jogo.sons.ajustar_volume("musica", -0.1)
+            elif botao == 3:
+                self.jogo.sons.tocar("som_m_mais", "narrador")
+                self.jogo.sons.ajustar_volume("musica", 0.1)
+            elif botao == 4:
+                self.alternarNarrador()
+
+    ################## ATIVAR / DESATIVAR NARRADOR
+    def alternarNarrador(self):
+        narradorAtivo = (arquivo.getConfig("narradorativo"))
+        if narradorAtivo == "true":
+            self.jogo.sons.tocar("narrador_desativado", "narrador")
+            arquivo.setConfig("narradorativo", "false")
+        else:
+            arquivo.setConfig("narradorativo", "true")
+            self.jogo.sons.tocar("narrador_ativado", "narrador")        
+    ################### ATIVAR / DESATIVAR NARRADOR
 
     def resetar_som(self):
         self.jogo.telas["config_audio"].resetar_som()
