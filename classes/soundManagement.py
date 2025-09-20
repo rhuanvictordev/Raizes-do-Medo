@@ -41,7 +41,12 @@ class GerenciadorDeSom:
             "diminuir_musica": pygame.mixer.Sound(root_path / "assets/sounds/menu/diminuir_musica.mp3"),
             "aumentar_musica": pygame.mixer.Sound(root_path / "assets/sounds/menu/aumentar_musica.mp3"),
             "ativar_desativar_narrador": pygame.mixer.Sound(root_path / "assets/sounds/menu/ativar_desativar_narrador.mp3"),
-            
+            "mudar_tecla1": pygame.mixer.Sound(root_path / "assets/sounds/menu/mudar_tecla1.mp3"),
+            "mudar_tecla2": pygame.mixer.Sound(root_path / "assets/sounds/menu/mudar_tecla2.mp3"),
+            "escolha1": pygame.mixer.Sound(root_path / "assets/sounds/menu/escolha1.mp3"),
+            "escolha2": pygame.mixer.Sound(root_path / "assets/sounds/menu/escolha2.mp3"),
+            "pausar": pygame.mixer.Sound(root_path / "assets/sounds/menu/pausar.mp3"),
+            "acessar_menu_principal": pygame.mixer.Sound(root_path / "assets/sounds/menu/acessar_menu_principal.mp3"),
 
 
             "NOVO_JOGO": pygame.mixer.Sound(root_path / "assets/sounds/menu/C_INICIAL.mp3"), # INICIANDO UM NOVO JOGO -> VOCE SE CHAMA JOAO
@@ -99,6 +104,9 @@ class GerenciadorDeSom:
 
     def parar_narrador(self):
         self.canais["narrador"].stop()
+    
+    def parar_cena(self):
+        self.canais["cena"].stop()
 
     def parar_ruido(self):
         self.canais["ruido"].stop()

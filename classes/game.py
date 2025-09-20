@@ -51,14 +51,8 @@ class Jogo:
             "config_controle_tecla2": EstadoConfigControleTecla2(self),
             "pausa": EstadoPausa(self),
 
-            ## CENAS
+            ## CENAS 
             "C1": C1(self),
-            "A": A(self),
-            "B": B(self),
-            "A2": A2(self),
-            "AB": AB(self),
-            "BA": BA(self),
-            "B2": B2(self),
         }
 
         self.estado_atual_nome = "menu"
@@ -104,11 +98,11 @@ class Jogo:
             fade.set_alpha(alpha)
             TELA.blit(fade, (0, 0))
             pygame.display.update()
-            pygame.time.delay(1)
+            pygame.time.delay(10)
         self.telas[para_estado].resetar_som()
         for alpha in range(255, 0, -10):
             self.telas[para_estado].exibir(self.sons)
             fade.set_alpha(alpha)
             TELA.blit(fade, (0, 0))
             pygame.display.update()
-            pygame.time.delay(1)
+            pygame.time.delay(10)
