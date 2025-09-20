@@ -15,33 +15,45 @@ class CenaBase(Estado):
 
     def exibir(self):
         botoes = [(0.026, 0.840, 0.314, 0.066, ""),(0.026, 0.923, 0.314, 0.066, ""),(0.360, 0.832, 0.625, 0.074, ""),(0.360, 0.915, 0.625, 0.074, "")]
-        self.jogo.sons.parar_musica(); self.jogo.telas[self.cena].exibir(self.jogo.sons); self.jogo.sons.tocar_ruido()
+        self.jogo.sons.parar_musica(); self.jogo.telas[self.cena].exibir(self.jogo.sons); self.jogo.sons.tocar_ruido(); self.jogo.telas[self.cena].tocar_cena(self.jogo.sons)
         self.jogo.telas[self.cena].carregarBotoes(botoes)
         arquivo.setSave("tela", self.cena)
         self.jogo.ultimaCena = self.cena
 
     def processar_eventos(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado("pausa")
-            elif event.key in (pygame.K_LCTRL, pygame.K_RCTRL): self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.sons.tocar(self.cena,"narrador")
+            if event.key == pygame.K_ESCAPE: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado("menu")
+            if event.key == pygame.K_p: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado("pausa")
+            
+            elif event.key in (pygame.K_LCTRL, pygame.K_RCTRL):
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.parar_cena()
+                narradorAtivado = (arquivo.getConfig("narradorativo") == "true")
+                if narradorAtivado:
+                    self.jogo.sons.tocar(self.cena,"narrador")
+                else:
+                    self.jogo.sons.tocar(self.cena,"cena")
+            
             elif event.key == int(arquivo.getConfig("tecla1", "49")): self.jogo.sons.parar_narrador(); self.jogo.mudar_estado(self.cenaescolha1)
             elif event.key == int(arquivo.getConfig("tecla2", "50")): self.jogo.sons.parar_narrador(); self.jogo.mudar_estado(self.cenaescolha2)
 
         elif event.type == pygame.MOUSEMOTION:
-            pos_mouse = pygame.mouse.get_pos()
-            botao = self.jogo.telas[self.cena].verificar_clique(pos_mouse)
-            if botao == 0: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.sons.tocar("pausar", "narrador")
-            elif botao == 1: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.sons.tocar("acessar_menu_principal", "narrador")
-            elif botao == 2: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.sons.tocar("escolha1", "narrador")
-            elif botao == 3: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.sons.tocar("escolha2", "narrador")
-        
+            narradorAtivado = (arquivo.getConfig("narradorativo") == "true")
+            if narradorAtivado:
+                pos_mouse = pygame.mouse.get_pos()
+                botao = self.jogo.telas[self.cena].verificar_clique(pos_mouse)
+                if botao == 0: self.jogo.sons.parar_narrador();  self.jogo.sons.tocar("pausar", "narrador")
+                elif botao == 1: self.jogo.sons.parar_narrador();  self.jogo.sons.tocar("acessar_menu_principal", "narrador")
+                elif botao == 2: self.jogo.sons.parar_narrador();  self.jogo.sons.tocar("escolha1", "narrador")
+                elif botao == 3: self.jogo.sons.parar_narrador();  self.jogo.sons.tocar("escolha2", "narrador")
+            
         elif event.type == pygame.MOUSEBUTTONUP:
             pos_mouse = pygame.mouse.get_pos()
             botao = self.jogo.telas[self.cena].verificar_clique(pos_mouse)
-            if botao == 0: self.jogo.sons.parar_narrador(); self.jogo.mudar_estado("pausa")
-            elif botao == 1: self.jogo.sons.parar_narrador(); self.jogo.mudar_estado("menu")
-            elif botao == 2: self.jogo.sons.parar_narrador(); self.jogo.mudar_estado(self.cenaescolha1)
-            elif botao == 3: self.jogo.sons.parar_narrador(); self.jogo.mudar_estado(self.cenaescolha2)
+            if botao == 0: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado("pausa")
+            elif botao == 1: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado("menu")
+            elif botao == 2: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado(self.cenaescolha1)
+            elif botao == 3: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado(self.cenaescolha2)
 
     def resetar_som(self):
         self.jogo.telas[self.cena].resetar_som()
@@ -511,5 +523,5 @@ class EstadoConfigControleTecla2(Estado):
     def resetar_som(self):
         self.jogo.telas["config_controle_tecla2"].resetar_som()
 
-class C1(CenaBase): cena = "C1"; cenaescolha1 = "pausa"; cenaescolha2 = "pausa"
+class C1(CenaBase): cena = "C1"; cenaescolha1 = "C1"; cenaescolha2 = "C1"
 

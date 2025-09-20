@@ -1,5 +1,5 @@
 import pygame
-from classes.soundManagement import GerenciadorDeSom
+from classes.soundManagement import MapeamentoDeSons
 import random
 import service.prop as arquivo
 
@@ -22,12 +22,25 @@ class Tela:
         self.som_tocou = False
         self.botoes = []
 
-    def exibir(self, sons: GerenciadorDeSom):
+    def exibir(self, sons: MapeamentoDeSons):
         TELA.blit(self.fundo, (0, 0))
-        if self.som_nome and not self.som_tocou:
-            if(arquivo.getConfig("narradorativo") == "true"):
+        narradorAtivado = (arquivo.getConfig("narradorativo") == "true")
+        if narradorAtivado:
+            if self.som_nome and not self.som_tocou:
                 sons.tocar(self.som_nome, "narrador", False)
             self.som_tocou = True
+
+
+    def tocar_cena(self, sons: MapeamentoDeSons):
+        narradorAtivado = (arquivo.getConfig("narradorativo") == "true")
+        if narradorAtivado == False:
+            if self.som_nome and not self.som_tocou:
+                sons.tocar(self.som_nome, "cena", False)
+            self.som_tocou = True
+
+
+
+
 
     def resetar_som(self):
         self.som_tocou = False

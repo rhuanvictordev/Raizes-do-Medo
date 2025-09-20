@@ -3,7 +3,7 @@ import pygame
 import service.prop as arquivoConfig
 
 
-class GerenciadorDeSom:
+class MapeamentoDeSons:
     def __init__(self):
         root_path = Path(__file__).resolve().parent.parent
 
@@ -53,13 +53,8 @@ class GerenciadorDeSom:
             "C_ACORDAR": pygame.mixer.Sound(root_path / "assets/sounds/menu/C_ACORDAR.mp3"), # VOCE ACORDA EM SUA CASA
             
             # CENAS:
-            "C1": pygame.mixer.Sound(root_path / "assets/sounds/cenas/C1.mp3"), # ELIAS: -OPA JOAO TUDO CERTO?
-            "A": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A.mp3"),
-            "B": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B.mp3"),
-            "A2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A2.mp3"),
-            "AB": pygame.mixer.Sound(root_path / "assets/sounds/cenas/AB.mp3"),
-            "BA": pygame.mixer.Sound(root_path / "assets/sounds/cenas/BA.mp3"),
-            "B2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2.mp3"),
+            "C1": pygame.mixer.Sound(root_path / "assets/sounds/cenas/C1.mp3"),
+            
         }
 
         self.canais = {

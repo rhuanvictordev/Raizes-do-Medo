@@ -9,7 +9,7 @@ class Jogo:
 
         self.ultimaCena = "menu"
 
-        self.sons = GerenciadorDeSom()
+        self.sons = MapeamentoDeSons()
         self.telas = {
              
              ## MENU
@@ -28,12 +28,6 @@ class Jogo:
             "C_ACORDAR": Tela(root_path / "assets/images/menu/C_ACORDAR.png", "C_ACORDAR"),
 
             "C1": Tela(root_path / "assets/images/cenas/C1.png", "C1"),
-            "A": Tela(root_path / "assets/images/cenas/A.png", "A"),
-            "B": Tela(root_path / "assets/images/cenas/B.png", "B"),
-            "A2": Tela(root_path / "assets/images/cenas/A2.png", "A2"),
-            "AB": Tela(root_path / "assets/images/cenas/AB.png", "AB"),
-            "BA": Tela(root_path / "assets/images/cenas/BA.png", "BA"),
-            "B2": Tela(root_path / "assets/images/cenas/B2.png", "B2"),
             
         }
         self.estados = {
@@ -98,11 +92,11 @@ class Jogo:
             fade.set_alpha(alpha)
             TELA.blit(fade, (0, 0))
             pygame.display.update()
-            pygame.time.delay(10)
+            pygame.time.delay(1)
         self.telas[para_estado].resetar_som()
         for alpha in range(255, 0, -10):
             self.telas[para_estado].exibir(self.sons)
             fade.set_alpha(alpha)
             TELA.blit(fade, (0, 0))
             pygame.display.update()
-            pygame.time.delay(10)
+            pygame.time.delay(1)
