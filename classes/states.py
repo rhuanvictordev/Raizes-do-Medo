@@ -78,10 +78,10 @@ class EstadoMenu(Estado):
                 self.jogo.sons.tocar("menu", "narrador")
             elif event.key == pygame.K_1:
                 self.jogo.sons.tocar("novo", "narrador")
-                time.sleep(2)
-                pygame.event.clear()
+                time.sleep(2); pygame.event.clear()
                 self.jogo.sons.parar_narrador()
                 self.jogo.sons.parar_musica()
+                self.jogo.sons.tocar("musica2", "musica")
                 self.jogo.mudar_estado("NOVO_JOGO", 20)
             elif event.key == pygame.K_2:
                 self.jogo.sons.tocar_ruido()
@@ -121,10 +121,10 @@ class EstadoMenu(Estado):
             botao = self.jogo.telas["menu"].verificar_clique(pos_mouse)
             if botao == 0:
                 self.jogo.sons.tocar("novo", "narrador")
-                time.sleep(2)
-                pygame.event.clear()
+                time.sleep(2); pygame.event.clear()
                 self.jogo.sons.parar_narrador()
                 self.jogo.sons.parar_musica()
+                self.jogo.sons.tocar("musica2", "musica")
                 self.jogo.mudar_estado("NOVO_JOGO", 20)
             elif botao == 1:
                 self.jogo.sons.parar_musica()
@@ -145,41 +145,40 @@ class EstadoMenu(Estado):
 class EstadoNovoJogo(Estado):
     def exibir(self):
         self.jogo.telas["NOVO_JOGO"].exibir(self.jogo.sons)
-        self.jogo.sons.parar_musica()
-        self.jogo.sons.tocar("musica2", "musica")
-
-        time.sleep(83)
-        pygame.event.clear()
-        self.jogo.sons.parar_narrador()
-        self.jogo.mudar_estado("C_ACORDAR")
+        # 83
+        #time.sleep(4)
+        #pygame.event.clear()
+        #self.jogo.sons.parar_narrador()
+        #self.jogo.mudar_estado("C_ACORDAR")
 
     def resetar_som(self):
         self.jogo.telas["NOVO_JOGO"].resetar_som()
 
     def processar_eventos(self, event):
-        if event.key in (pygame.K_SPACE, pygame.MOUSEBUTTONUP):
-            self.jogo.mudar_estado("C_ACORDAR")
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                self.jogo.sons.parar_narrador()
+                self.jogo.mudar_estado("C_ACORDAR")
 
 class C_ACORDAR(Estado):
 
     def exibir(self):
-        self.jogo.sons.tocar_ruido()
         self.jogo.telas["C_ACORDAR"].exibir(self.jogo.sons)
-
-        # mantém a cena visível por 43s
-        inicio = time.time()
-        while time.time() - inicio < 43:
-            pygame.event.pump()      # mantém pygame vivo
-            pygame.event.clear()     # esvazia fila (ignora teclas/cliques)
-            time.sleep(0.02)         # espera em pequenos passos
-        self.jogo.sons.parar_narrador()
-        self.jogo.mudar_estado("C1")
+        self.jogo.sons.tocar_ruido()
+        # 43
+        #time.sleep(4)
+        #pygame.event.clear()
+        #self.jogo.sons.parar_narrador()
+        #self.jogo.mudar_estado("C1")
 
     def resetar_som(self):
         self.jogo.telas["C_ACORDAR"].resetar_som()
 
     def processar_eventos(self, event):
-        pass
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                self.jogo.sons.parar_narrador()
+                self.jogo.mudar_estado("C1")
 
 class EstadoPausa(Estado):
     def exibir(self):
