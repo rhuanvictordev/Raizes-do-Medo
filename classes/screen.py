@@ -38,10 +38,6 @@ class Tela:
                 sons.tocar(self.som_nome, "cena", False)
             self.som_tocou = True
 
-
-
-
-
     def resetar_som(self):
         self.som_tocou = False
 
@@ -55,9 +51,9 @@ class Tela:
             rect = pygame.Rect(percentualDaEsquerda * LARGURA, percentualDaDireita * ALTURA, percentualLargura* LARGURA, percentualAltura * ALTURA)
             if rect.collidepoint(pos_mouse):
                 cursor_hover = True
-                cor = (0, 0, 0, 100) # debug (200, 200, 200, 200)
+                cor = (0, 0, 0, 100) # debug (200, 200, 200, 200) nao debug (0, 0, 0, 100)
             else:
-                cor = (0, 0, 0, 0) # debug (100, 100, 100, 100)
+                cor = (0, 0, 0, 0) # debug (100, 100, 100, 100) nao debug (0, 0, 0, 0)
 
             overlay = pygame.Surface((rect.width, rect.height), pygame.SRCALPHA)
             overlay.fill(cor)

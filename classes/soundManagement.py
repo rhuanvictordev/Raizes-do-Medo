@@ -10,6 +10,7 @@ class MapeamentoDeSons:
         self.sons = {
             "ruido": pygame.mixer.Sound(root_path / "assets/sounds/menu/ruido.mp3"),
             "musica": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_musica.mp3"),
+            "musica2": pygame.mixer.Sound(root_path / "assets/sounds/menu/musica2.mp3"),
             "menu": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_menu.mp3"),
             "config": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_configuracoes.mp3"),
             "pausa": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_pausa.mp3"),

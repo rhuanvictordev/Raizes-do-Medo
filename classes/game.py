@@ -53,18 +53,19 @@ class Jogo:
         self.estado_anterior_nome = None
         self.estado = self.estados[self.estado_atual_nome]
 
-    def mudar_estado(self, estadoNovo):
+    def mudar_estado(self, estadoNovo, tempo=1):
         if estadoNovo == 'pausa':
             if self.estado != self.estados['pausa']:
                 self.estado_anterior_nome = self.estado_atual_nome
             self.estado = self.estados['pausa']
 
         elif estadoNovo in self.estados:
-            self.transicao_com_fade(self.estado_atual_nome, estadoNovo)
+            self.transicao_com_fade(self.estado_atual_nome, estadoNovo, tempo)
             self.estado_anterior_nome = self.estado_atual_nome
             self.estado_atual_nome = estadoNovo
             self.estado = self.estados[estadoNovo]
             self.estado.resetar_som()
+        
     
 
     def atualizar_tela(self):
@@ -82,7 +83,7 @@ class Jogo:
                 self.estado.processar_eventos(event)
 
 
-    def transicao_com_fade(self, de_estado, para_estado):
+    def transicao_com_fade(self, de_estado, para_estado, tempo):
         if de_estado not in self.telas or para_estado not in self.telas:
             return
         fade = pygame.Surface((LARGURA, ALTURA))
@@ -92,11 +93,11 @@ class Jogo:
             fade.set_alpha(alpha)
             TELA.blit(fade, (0, 0))
             pygame.display.update()
-            pygame.time.delay(1)
+            pygame.time.delay(tempo)
         self.telas[para_estado].resetar_som()
         for alpha in range(255, 0, -10):
             self.telas[para_estado].exibir(self.sons)
             fade.set_alpha(alpha)
             TELA.blit(fade, (0, 0))
             pygame.display.update()
-            pygame.time.delay(1)
+            pygame.time.delay(tempo)

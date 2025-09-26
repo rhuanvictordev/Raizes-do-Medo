@@ -77,9 +77,12 @@ class EstadoMenu(Estado):
             if event.key in (pygame.K_LCTRL, pygame.K_RCTRL):
                 self.jogo.sons.tocar("menu", "narrador")
             elif event.key == pygame.K_1:
+                self.jogo.sons.tocar("novo", "narrador")
+                time.sleep(2)
+                pygame.event.clear()
                 self.jogo.sons.parar_narrador()
                 self.jogo.sons.parar_musica()
-                self.jogo.mudar_estado("NOVO_JOGO")
+                self.jogo.mudar_estado("NOVO_JOGO", 20)
             elif event.key == pygame.K_2:
                 self.jogo.sons.tocar_ruido()
                 self.jogo.mudar_estado(arquivo.getSave("tela")) # continua o jogo do ponto que parou
@@ -117,7 +120,12 @@ class EstadoMenu(Estado):
             pos_mouse = pygame.mouse.get_pos()
             botao = self.jogo.telas["menu"].verificar_clique(pos_mouse)
             if botao == 0:
-                self.jogo.mudar_estado("NOVO_JOGO")
+                self.jogo.sons.tocar("novo", "narrador")
+                time.sleep(2)
+                pygame.event.clear()
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.parar_musica()
+                self.jogo.mudar_estado("NOVO_JOGO", 20)
             elif botao == 1:
                 self.jogo.sons.parar_musica()
                 self.jogo.mudar_estado(arquivo.getSave("tela"))
@@ -136,16 +144,12 @@ class EstadoMenu(Estado):
 
 class EstadoNovoJogo(Estado):
     def exibir(self):
-        self.jogo.sons.tocar_ruido()
         self.jogo.telas["NOVO_JOGO"].exibir(self.jogo.sons)
         self.jogo.sons.parar_musica()
+        self.jogo.sons.tocar("musica2", "musica")
 
-        # mantém a cena visível por 18s
-        inicio = time.time()
-        while time.time() - inicio < 18:
-            pygame.event.pump()      # mantém pygame vivo
-            pygame.event.clear()     # esvazia fila (ignora teclas/cliques)
-            time.sleep(0.02)         # espera em pequenos passos
+        time.sleep(83)
+        pygame.event.clear()
         self.jogo.sons.parar_narrador()
         self.jogo.mudar_estado("C_ACORDAR")
 
@@ -153,18 +157,18 @@ class EstadoNovoJogo(Estado):
         self.jogo.telas["NOVO_JOGO"].resetar_som()
 
     def processar_eventos(self, event):
-        pass
+        if event.key in (pygame.K_SPACE, pygame.MOUSEBUTTONUP):
+            self.jogo.mudar_estado("C_ACORDAR")
 
 class C_ACORDAR(Estado):
 
     def exibir(self):
-        #self.jogo.sons.tocar_ruido()
+        self.jogo.sons.tocar_ruido()
         self.jogo.telas["C_ACORDAR"].exibir(self.jogo.sons)
-        self.jogo.sons.parar_musica()
 
-        # mantém a cena visível por 20s
+        # mantém a cena visível por 43s
         inicio = time.time()
-        while time.time() - inicio < 20:
+        while time.time() - inicio < 43:
             pygame.event.pump()      # mantém pygame vivo
             pygame.event.clear()     # esvazia fila (ignora teclas/cliques)
             time.sleep(0.02)         # espera em pequenos passos
@@ -523,5 +527,5 @@ class EstadoConfigControleTecla2(Estado):
     def resetar_som(self):
         self.jogo.telas["config_controle_tecla2"].resetar_som()
 
-class C1(CenaBase): cena = "C1"; cenaescolha1 = "C1"; cenaescolha2 = "C1"
+class C1(CenaBase): cena = "C1"; cenaescolha1 = "creditos"; cenaescolha2 = "C1"
 
