@@ -549,7 +549,7 @@ class BA3(CenaBase): cena = "BA3"; cenaescolha1 = "A5"; cenaescolha2 = "A4B"
 
 
 class A2B(CenaBase): cena = "A2B"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
-class ABA(CenaBase): cena = "ABA"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
+class ABA(CenaBase): cena = "ABA"; cenaescolha1 = "A4BA"; cenaescolha2 = "BA"
 class B2A(CenaBase): cena = "B2A"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 class B3(CenaBase): cena = "B3"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 

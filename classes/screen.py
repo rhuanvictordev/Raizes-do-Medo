@@ -5,11 +5,11 @@ import service.prop as arquivo
 
 pygame.init()
 info = pygame.display.Info()
-#LARGURA, ALTURA = info.current_w, info.current_h
-#TELA = pygame.display.set_mode((LARGURA, ALTURA), pygame.FULLSCREEN)
+LARGURA, ALTURA = info.current_w, info.current_h
+TELA = pygame.display.set_mode((LARGURA, ALTURA), pygame.FULLSCREEN)
 
-LARGURA, ALTURA = 1280, 720
-TELA = pygame.display.set_mode((LARGURA, ALTURA))
+#LARGURA, ALTURA = 1280, 720
+#TELA = pygame.display.set_mode((LARGURA, ALTURA))
 
 pygame.display.set_caption("Raízes do medo")
 pygame.event.set_grab(False)   # trava o mouse dentro da janela
