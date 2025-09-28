@@ -48,13 +48,17 @@ class MapeamentoDeSons:
             "escolha2": pygame.mixer.Sound(root_path / "assets/sounds/menu/escolha2.mp3"),
             "pausar": pygame.mixer.Sound(root_path / "assets/sounds/menu/pausar.mp3"),
             "acessar_menu_principal": pygame.mixer.Sound(root_path / "assets/sounds/menu/acessar_menu_principal.mp3"),
-
-
-            "NOVO_JOGO": pygame.mixer.Sound(root_path / "assets/sounds/menu/C_INICIAL.mp3"), # INICIANDO UM NOVO JOGO -> VOCE SE CHAMA JOAO
-            "C_ACORDAR": pygame.mixer.Sound(root_path / "assets/sounds/menu/C_ACORDAR.mp3"), # VOCE ACORDA EM SUA CASA
+            "NOVO_JOGO": pygame.mixer.Sound(root_path / "assets/sounds/menu/C_INICIAL.mp3"),
+            "C_ACORDAR": pygame.mixer.Sound(root_path / "assets/sounds/menu/C_ACORDAR.mp3"),
             
             # CENAS:
             "C1": pygame.mixer.Sound(root_path / "assets/sounds/cenas/C1.mp3"),
+            "A": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A.mp3"),
+            "B": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B.mp3"),
+            "A2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A2.mp3"),
+            "AB": pygame.mixer.Sound(root_path / "assets/sounds/cenas/AB.mp3"),
+            "BA": pygame.mixer.Sound(root_path / "assets/sounds/cenas/BA.mp3"),
+            "B2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2.mp3"),
             
         }
 

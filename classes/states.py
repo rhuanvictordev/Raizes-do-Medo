@@ -526,5 +526,11 @@ class EstadoConfigControleTecla2(Estado):
     def resetar_som(self):
         self.jogo.telas["config_controle_tecla2"].resetar_som()
 
-class C1(CenaBase): cena = "C1"; cenaescolha1 = "creditos"; cenaescolha2 = "C1"
+class C1(CenaBase): cena = "C1"; cenaescolha1 = "A"; cenaescolha2 = "B" # OK
+class A(CenaBase): cena = "A"; cenaescolha1 = "A2"; cenaescolha2 = "AB" # OK
+class B(CenaBase): cena = "B"; cenaescolha1 = "BA"; cenaescolha2 = "B2" # OK
+class A2(CenaBase): cena = "A2"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
+class AB(CenaBase): cena = "AB"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
+class BA(CenaBase): cena = "BA"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
+class B2(CenaBase): cena = "B2"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 
