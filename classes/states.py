@@ -534,12 +534,17 @@ class AB(CenaBase): cena = "AB"; cenaescolha1 = "ABA"; cenaescolha2 = "A2B" # OK
 class BA(CenaBase): cena = "BA"; cenaescolha1 = "BA2"; cenaescolha2 = "ABA" # OK
 class B2(CenaBase): cena = "B2"; cenaescolha1 = "B2A"; cenaescolha2 = "B3" # OK
 class A3(CenaBase): cena = "A3"; cenaescolha1 = "A4"; cenaescolha2 = "A3B" # OK
+class A4(CenaBase): cena = "A4"; cenaescolha1 = "A5"; cenaescolha2 = "A4B" # OK
+class A3B(CenaBase): cena = "A3B"; cenaescolha1 = "A5"; cenaescolha2 = "A4B" # OK
+class A4B(CenaBase): cena = "A4B"; cenaescolha1 = "A4BA"; cenaescolha2 = "A4B2" # OK
+class A5(CenaBase): cena = "A5"; cenaescolha1 = "A6"; cenaescolha2 = "A4B2" # OK
+class A6(CenaBase): cena = "A6"; cenaescolha1 = "A4BA"; cenaescolha2 = "BA" # OK
 
-class A4(CenaBase): cena = "A4"; cenaescolha1 = "A5"; cenaescolha2 = "A4B"
-class A3B(CenaBase): cena = "A3B"; cenaescolha1 = "A5"; cenaescolha2 = "A4B"
-class A4B(CenaBase): cena = "A4B"; cenaescolha1 = "A4BA"; cenaescolha2 = "A4B2"
-class A5(CenaBase): cena = "A5"; cenaescolha1 = "A6"; cenaescolha2 = "A4B2"
-class A6(CenaBase): cena = "A6"; cenaescolha1 = "A4BA"; cenaescolha2 = "BA"
+
+
+
+class BA2(CenaBase): cena = "BA2"; cenaescolha1 = "BA3"; cenaescolha2 = "B2"
+class BA3(CenaBase): cena = "BA3"; cenaescolha1 = "A5"; cenaescolha2 = "A4B"
 
 
 
@@ -547,6 +552,8 @@ class A2B(CenaBase): cena = "A2B"; cenaescolha1 = "creditos"; cenaescolha2 = "cr
 class ABA(CenaBase): cena = "ABA"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 class B2A(CenaBase): cena = "B2A"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 class B3(CenaBase): cena = "B3"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
+
+
 
 
 
