@@ -34,8 +34,8 @@ class CenaBase(Estado):
                 else:
                     self.jogo.sons.tocar(self.cena,"cena")
             
-            elif event.key == int(arquivo.getConfig("tecla1", "49")): self.jogo.sons.parar_narrador(); self.jogo.mudar_estado(self.cenaescolha1)
-            elif event.key == int(arquivo.getConfig("tecla2", "50")): self.jogo.sons.parar_narrador(); self.jogo.mudar_estado(self.cenaescolha2)
+            elif event.key == int(arquivo.getConfig("tecla1", "49")): self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado(self.cenaescolha1)
+            elif event.key == int(arquivo.getConfig("tecla2", "50")): self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado(self.cenaescolha2)
 
         elif event.type == pygame.MOUSEMOTION:
             narradorAtivado = (arquivo.getConfig("narradorativo") == "true")
