@@ -529,15 +529,26 @@ class EstadoConfigControleTecla2(Estado):
 class C1(CenaBase): cena = "C1"; cenaescolha1 = "A"; cenaescolha2 = "B" # OK
 class A(CenaBase): cena = "A"; cenaescolha1 = "A2"; cenaescolha2 = "AB" # OK
 class B(CenaBase): cena = "B"; cenaescolha1 = "BA"; cenaescolha2 = "B2" # OK
+class A2(CenaBase): cena = "A2"; cenaescolha1 = "A3"; cenaescolha2 = "A2B" # OK
+class AB(CenaBase): cena = "AB"; cenaescolha1 = "ABA"; cenaescolha2 = "A2B" # OK
+class BA(CenaBase): cena = "BA"; cenaescolha1 = "BA2"; cenaescolha2 = "ABA" # OK
+class B2(CenaBase): cena = "B2"; cenaescolha1 = "B2A"; cenaescolha2 = "B3" # OK
+class A3(CenaBase): cena = "A3"; cenaescolha1 = "A4"; cenaescolha2 = "A3B" # OK
 
-class A2(CenaBase): cena = "A2"; cenaescolha1 = "A3"; cenaescolha2 = "A2B"
-class AB(CenaBase): cena = "AB"; cenaescolha1 = "ABA"; cenaescolha2 = "A2B"
-class BA(CenaBase): cena = "BA"; cenaescolha1 = "BA2"; cenaescolha2 = "ABA"
-class B2(CenaBase): cena = "B2"; cenaescolha1 = "B2A"; cenaescolha2 = "B3"
+class A4(CenaBase): cena = "A4"; cenaescolha1 = "A5"; cenaescolha2 = "A4B"
+class A3B(CenaBase): cena = "A3B"; cenaescolha1 = "A5"; cenaescolha2 = "A4B"
+class A4B(CenaBase): cena = "A4B"; cenaescolha1 = "A4BA"; cenaescolha2 = "A4B2"
+class A5(CenaBase): cena = "A5"; cenaescolha1 = "A6"; cenaescolha2 = "A4B2"
+class A6(CenaBase): cena = "A6"; cenaescolha1 = "A4BA"; cenaescolha2 = "BA"
 
-class A3(CenaBase): cena = "A3"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
+
+
 class A2B(CenaBase): cena = "A2B"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 class ABA(CenaBase): cena = "ABA"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 class B2A(CenaBase): cena = "B2A"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 class B3(CenaBase): cena = "B3"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
+
+
+
+
 
