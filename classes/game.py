@@ -46,7 +46,6 @@ class Jogo:
             "A6": Tela(root_path / "assets/images/cenas/A6.png", "A6"),
             "BA2": Tela(root_path / "assets/images/cenas/BA2.png", "BA2"),
             "BA3": Tela(root_path / "assets/images/cenas/BA3.png", "BA3"),
-
             "B2A2": Tela(root_path / "assets/images/cenas/B2A2.png", "B2A2"),
             "B2A3": Tela(root_path / "assets/images/cenas/B2A3.png", "B2A3"),
             "B2A2B": Tela(root_path / "assets/images/cenas/B2A2B.png", "B2A2B"),
@@ -55,6 +54,15 @@ class Jogo:
             "B2A2BAB": Tela(root_path / "assets/images/cenas/B2A2BAB.png", "B2A2BAB"),
             "B2A2BABA": Tela(root_path / "assets/images/cenas/B2A2BABA.png", "B2A2BABA"),
             "B2A2BAB2": Tela(root_path / "assets/images/cenas/B2A2BAB2.png", "B2A2BAB2"),
+
+            "A4BA": Tela(root_path / "assets/images/cenas/A4BA.png", "A4BA"),
+            "A4BA2": Tela(root_path / "assets/images/cenas/A4BA2.png", "A4BA2"),
+            "A4BAB": Tela(root_path / "assets/images/cenas/A4BAB.png", "A4BAB"),
+            "A4BAB2": Tela(root_path / "assets/images/cenas/A4BAB2.png", "A4BAB2"),
+            "GAME_OVER_1": Tela(root_path / "assets/images/cenas/GAME_OVER_1.png", "GAME_OVER_1"),
+            "GAME_OVER_2": Tela(root_path / "assets/images/cenas/GAME_OVER_2.png", "GAME_OVER_2"),
+            "GAME_OVER_6": Tela(root_path / "assets/images/cenas/GAME_OVER_6.png", "GAME_OVER_6"),
+            "MORREU": Tela(root_path / "assets/images/cenas/MORREU.png", "MORREU"),
             
         }
         self.estados = {
@@ -92,7 +100,6 @@ class Jogo:
             "A6": A6(self),
             "BA2": BA2(self),
             "BA3": BA3(self),
-
             "B2A2": B2A2(self),
             "B2A3": B2A3(self),
             "B2A2B": B2A2B(self),
@@ -101,6 +108,15 @@ class Jogo:
             "B2A2BAB": B2A2BAB(self),
             "B2A2BABA": B2A2BABA(self),
             "B2A2BAB2": B2A2BAB2(self),
+
+            "A4BA": A4BA(self),
+            "A4BA2": A4BA2(self),
+            "A4BAB": A4BAB(self),
+            "A4BAB2": A4BAB2(self),
+            "GAME_OVER_1": GAME_OVER_1(self),
+            "GAME_OVER_2": GAME_OVER_2(self),
+            "GAME_OVER_6": GAME_OVER_6(self),
+            "MORREU": MORREU(self),
         }
 
         self.estado_atual_nome = "menu"

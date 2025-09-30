@@ -83,6 +83,7 @@ class EstadoMenu(Estado):
                 self.jogo.sons.parar_musica()
                 self.jogo.sons.tocar("musica2", "musica")
                 self.jogo.mudar_estado("NOVO_JOGO", 20)
+                
             elif event.key == pygame.K_2:
                 self.jogo.sons.tocar_ruido()
                 self.jogo.mudar_estado(arquivo.getSave("tela")) # continua o jogo do ponto que parou
@@ -247,6 +248,65 @@ class EstadoCreditos(Estado):
 
     def resetar_som(self):
         self.jogo.telas["creditos"].resetar_som()
+
+
+class MORREU(Estado):
+    def exibir(self):
+        botoes = [
+            (0.204, 0.610, 0.290, 0.222, ""),
+            (0.524, 0.610, 0.290, 0.222, ""),
+        ]
+        self.jogo.telas["MORREU"].exibir(self.jogo.sons)
+        self.jogo.telas["MORREU"].carregarBotoes(botoes)
+        self.jogo.sons.tocar("musica", "musica")
+
+    def processar_eventos(self, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == int(arquivo.getConfig("tecla1", "49")):
+                self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.sons.parar_musica()
+                self.jogo.sons.tocar("novo", "narrador")
+                time.sleep(2); pygame.event.clear()
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.parar_musica()
+                self.jogo.sons.tocar("musica2", "musica")
+                self.jogo.mudar_estado("NOVO_JOGO", 20)
+
+            elif event.key == int(arquivo.getConfig("tecla2", "50")):
+                self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.sons.parar_musica()
+                self.jogo.mudar_estado("menu", 10)
+
+            elif event.key in (pygame.K_LCTRL, pygame.K_RCTRL):
+                self.jogo.sons.parar_narrador(); self.jogo.sons.tocar("MORREU", "narrador")
+            
+        elif event.type == pygame.MOUSEMOTION:
+            self.jogo.sons.parar_narrador()
+            self.jogo.sons.tocar("MORREU", "narrador")
+            pos_mouse = pygame.mouse.get_pos()
+            botao = self.jogo.telas["MORREU"].verificar_clique(pos_mouse)
+            if botao == 0:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("novo", "narrador")
+            elif botao == 1:
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.tocar("acessar_menu_principal", "narrador")
+
+        elif event.type == pygame.MOUSEBUTTONUP:
+            pos_mouse = pygame.mouse.get_pos()
+            botao = self.jogo.telas["MORREU"].verificar_clique(pos_mouse)
+            if botao == 0:
+                self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.sons.parar_musica()
+                self.jogo.sons.tocar("novo", "narrador")
+                time.sleep(2); pygame.event.clear()
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.parar_musica()
+                self.jogo.sons.tocar("musica2", "musica")
+                self.jogo.mudar_estado("NOVO_JOGO", 20)
+            if botao == 1:
+                self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.sons.parar_musica()
+                self.jogo.mudar_estado("menu", 10)
+
+    def resetar_som(self):
+        self.jogo.telas["MORREU"].resetar_som()
 
 class EstadoConfig(Estado):
     def exibir(self):
@@ -551,10 +611,21 @@ class B2A2B(CenaBase): cena = "B2A2B"; cenaescolha1 = "A4BA"; cenaescolha2 = "B2
 class B3A(CenaBase): cena = "B3A"; cenaescolha1 = "A5"; cenaescolha2 = "B2A2" # OK
 class B2A2BA(CenaBase): cena = "B2A2BA"; cenaescolha1 = "A4BA"; cenaescolha2 = "B2A2BAB" # OK
 class B2A2BAB(CenaBase): cena = "B2A2BAB"; cenaescolha1 = "B2A2BABA"; cenaescolha2 = "B2A2BAB2" # OK
+class A4BA(CenaBase): cena = "A4BA"; cenaescolha1 = "A4BA2"; cenaescolha2 = "A4BAB"  # OK
+class A4BA2(CenaBase): cena = "A4BA2"; cenaescolha1 = "GAME_OVER_1"; cenaescolha2 = "GAME_OVER_2"  # OK
+class A4BAB(CenaBase): cena = "A4BAB"; cenaescolha1 = "GAME_OVER_6"; cenaescolha2 = "A4BAB2"  # OK
+class A4BAB2(CenaBase): cena = "A4BAB2"; cenaescolha1 = "GAME_OVER_3"; cenaescolha2 = "A4B2A3BA"  # OK
+class GAME_OVER_1(CenaBase): cena = "GAME_OVER_1"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"  # OK
+class GAME_OVER_2(CenaBase): cena = "GAME_OVER_2"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"  # OK
+class GAME_OVER_6(CenaBase): cena = "GAME_OVER_6"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"  # OK
 
 
 class B2A2BABA(CenaBase): cena = "B2A2BABA"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 class B2A2BAB2(CenaBase): cena = "B2A2BAB2"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
+
+
+
+
 
 
 
