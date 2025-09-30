@@ -539,19 +539,23 @@ class A3B(CenaBase): cena = "A3B"; cenaescolha1 = "A5"; cenaescolha2 = "A4B" # O
 class A4B(CenaBase): cena = "A4B"; cenaescolha1 = "A4BA"; cenaescolha2 = "A4B2" # OK
 class A5(CenaBase): cena = "A5"; cenaescolha1 = "A6"; cenaescolha2 = "A4B2" # OK
 class A6(CenaBase): cena = "A6"; cenaescolha1 = "A4BA"; cenaescolha2 = "BA" # OK
+class BA2(CenaBase): cena = "BA2"; cenaescolha1 = "BA3"; cenaescolha2 = "B2" # OK
+class BA3(CenaBase): cena = "BA3"; cenaescolha1 = "A5"; cenaescolha2 = "A4B" # OK
+class A2B(CenaBase): cena = "A2B"; cenaescolha1 = "BA"; cenaescolha2 = "A4BA" # OK
+class ABA(CenaBase): cena = "ABA"; cenaescolha1 = "A4BA"; cenaescolha2 = "BA" # OK
+class B2A(CenaBase): cena = "B2A"; cenaescolha1 = "B2A2"; cenaescolha2 = "A4BA" # OK
+class B3(CenaBase): cena = "B3"; cenaescolha1 = "B3A"; cenaescolha2 = "B2A2" # OK
+class B2A2(CenaBase): cena = "B2A2"; cenaescolha1 = "B2A3"; cenaescolha2 = "B2A2B" # OK
+class B2A3(CenaBase): cena = "B2A3"; cenaescolha1 = "B2A2BA"; cenaescolha2 = "A4BA" # OK
+class B2A2B(CenaBase): cena = "B2A2B"; cenaescolha1 = "A4BA"; cenaescolha2 = "B2A2BA" # OK
+class B3A(CenaBase): cena = "B3A"; cenaescolha1 = "A5"; cenaescolha2 = "B2A2" # OK
+class B2A2BA(CenaBase): cena = "B2A2BA"; cenaescolha1 = "A4BA"; cenaescolha2 = "B2A2BAB" # OK
+class B2A2BAB(CenaBase): cena = "B2A2BAB"; cenaescolha1 = "B2A2BABA"; cenaescolha2 = "B2A2BAB2" # OK
 
 
+class B2A2BABA(CenaBase): cena = "B2A2BABA"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
+class B2A2BAB2(CenaBase): cena = "B2A2BAB2"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 
-
-class BA2(CenaBase): cena = "BA2"; cenaescolha1 = "BA3"; cenaescolha2 = "B2"
-class BA3(CenaBase): cena = "BA3"; cenaescolha1 = "A5"; cenaescolha2 = "A4B"
-
-
-
-class A2B(CenaBase): cena = "A2B"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
-class ABA(CenaBase): cena = "ABA"; cenaescolha1 = "A4BA"; cenaescolha2 = "BA"
-class B2A(CenaBase): cena = "B2A"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
-class B3(CenaBase): cena = "B3"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 
 
 

@@ -44,9 +44,17 @@ class Jogo:
             "A4B": Tela(root_path / "assets/images/cenas/A4B.png", "A4B"),
             "A5": Tela(root_path / "assets/images/cenas/A5.png", "A5"),
             "A6": Tela(root_path / "assets/images/cenas/A6.png", "A6"),
-
             "BA2": Tela(root_path / "assets/images/cenas/BA2.png", "BA2"),
             "BA3": Tela(root_path / "assets/images/cenas/BA3.png", "BA3"),
+
+            "B2A2": Tela(root_path / "assets/images/cenas/B2A2.png", "B2A2"),
+            "B2A3": Tela(root_path / "assets/images/cenas/B2A3.png", "B2A3"),
+            "B2A2B": Tela(root_path / "assets/images/cenas/B2A2B.png", "B2A2B"),
+            "B3A": Tela(root_path / "assets/images/cenas/B3A.png", "B3A"),
+            "B2A2BA": Tela(root_path / "assets/images/cenas/B2A2BA.png", "B2A2BA"),
+            "B2A2BAB": Tela(root_path / "assets/images/cenas/B2A2BAB.png", "B2A2BAB"),
+            "B2A2BABA": Tela(root_path / "assets/images/cenas/B2A2BABA.png", "B2A2BABA"),
+            "B2A2BAB2": Tela(root_path / "assets/images/cenas/B2A2BAB2.png", "B2A2BAB2"),
             
         }
         self.estados = {
@@ -82,9 +90,17 @@ class Jogo:
             "A4B": A4B(self),
             "A5": A5(self),
             "A6": A6(self),
-
             "BA2": BA2(self),
             "BA3": BA3(self),
+
+            "B2A2": B2A2(self),
+            "B2A3": B2A3(self),
+            "B2A2B": B2A2B(self),
+            "B3A": B3A(self),
+            "B2A2BA": B2A2BA(self),
+            "B2A2BAB": B2A2BAB(self),
+            "B2A2BABA": B2A2BABA(self),
+            "B2A2BAB2": B2A2BAB2(self),
         }
 
         self.estado_atual_nome = "menu"

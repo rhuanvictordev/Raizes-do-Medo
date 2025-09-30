@@ -69,9 +69,17 @@ class MapeamentoDeSons:
             "A4B": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B.mp3"),
             "A5": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A5.mp3"),
             "A6": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A6.mp3"),
-
             "BA2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/BA2.mp3"),
             "BA3": pygame.mixer.Sound(root_path / "assets/sounds/cenas/BA3.mp3"),
+
+            "B2A2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2A2.mp3"),
+            "B2A3": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2A3.mp3"),
+            "B2A2B": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2A2B.mp3"),
+            "B3A": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B3A.mp3"),
+            "B2A2BA": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2A2BA.mp3"),
+            "B2A2BAB": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2A2BAB.mp3"),
+            "B2A2BABA": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2A2BABA.mp3"),
+            "B2A2BAB2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2A2BAB2.mp3"),
 
 
             
