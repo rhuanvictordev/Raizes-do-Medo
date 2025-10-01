@@ -16,9 +16,13 @@ class CenaBase(Estado):
     def exibir(self):
         botoes = [(0.026, 0.840, 0.314, 0.066, ""),(0.026, 0.923, 0.314, 0.066, ""),(0.360, 0.832, 0.625, 0.074, ""),(0.360, 0.915, 0.625, 0.074, "")]
         self.jogo.sons.parar_musica(); self.jogo.telas[self.cena].exibir(self.jogo.sons); self.jogo.sons.tocar_ruido(); self.jogo.telas[self.cena].tocar_cena(self.jogo.sons)
-        self.jogo.telas[self.cena].carregarBotoes(botoes)
-        arquivo.setSave("tela", self.cena)
-        self.jogo.ultimaCena = self.cena
+        if self.cena not in ("GAME_OVER_1", "GAME_OVER_2", "GAME_OVER_3", "GAME_OVER_4", "GAME_OVER_5", "GAME_OVER_6", "GAME_OVER_7"):
+            self.jogo.telas[self.cena].carregarBotoes(botoes)
+            arquivo.setSave("tela", self.cena)
+            self.jogo.ultimaCena = self.cena
+        else:
+            arquivo.setSave("tela", self.cena)
+            self.jogo.ultimaCena = self.cena
 
     def processar_eventos(self, event):
         if event.type == pygame.KEYDOWN:
@@ -234,7 +238,7 @@ class EstadoCreditos(Estado):
                 self.jogo.sons.tocar("som_creditos", "narrador")
         elif event.type == pygame.MOUSEMOTION:
             self.jogo.sons.parar_narrador()
-            self.jogo.sons.tocar("creditos", "narrador")
+            self.jogo.sons.tocar("som_creditos", "narrador")
             pos_mouse = pygame.mouse.get_pos()
             botao = self.jogo.telas["creditos"].verificar_clique(pos_mouse)
             if botao == 0:
@@ -602,7 +606,7 @@ class A6(CenaBase): cena = "A6"; cenaescolha1 = "A4BA"; cenaescolha2 = "BA" # OK
 class BA2(CenaBase): cena = "BA2"; cenaescolha1 = "BA3"; cenaescolha2 = "B2" # OK
 class BA3(CenaBase): cena = "BA3"; cenaescolha1 = "A5"; cenaescolha2 = "A4B" # OK
 class A2B(CenaBase): cena = "A2B"; cenaescolha1 = "BA"; cenaescolha2 = "A4BA" # OK
-class ABA(CenaBase): cena = "ABA"; cenaescolha1 = "A4BA"; cenaescolha2 = "BA" # OK
+class ABA(CenaBase): cena = "ABA"; cenaescolha1 = "A4BA"; cenaescolha2 = "BA3" # OK
 class B2A(CenaBase): cena = "B2A"; cenaescolha1 = "B2A2"; cenaescolha2 = "A4BA" # OK
 class B3(CenaBase): cena = "B3"; cenaescolha1 = "B3A"; cenaescolha2 = "B2A2" # OK
 class B2A2(CenaBase): cena = "B2A2"; cenaescolha1 = "B2A3"; cenaescolha2 = "B2A2B" # OK
