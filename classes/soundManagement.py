@@ -79,7 +79,6 @@ class MapeamentoDeSons:
             "B2A2BAB": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2A2BAB.mp3"),
             "B2A2BABA": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2A2BABA.mp3"),
             "B2A2BAB2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/B2A2BAB2.mp3"),
-
             "A4BA": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4BA.mp3"),
             "A4BA2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4BA2.mp3"),
             "A4BAB": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4BAB.mp3"),
@@ -88,6 +87,21 @@ class MapeamentoDeSons:
             "GAME_OVER_2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_2.mp3"),
             "GAME_OVER_6": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_6.mp3"),
             "MORREU": pygame.mixer.Sound(root_path / "assets/sounds/cenas/MORREU.mp3"),
+            "A4B2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B2.mp3"),
+            "A4B2A": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B2A.mp3"),
+            "A4B3": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B3.mp3"),
+            "A4B2A2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B2A2.mp3"),
+            "A4B2AB": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B2AB.mp3"),
+            "GAME_OVER_4": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_4.mp3"),
+            "A4B4": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B4.mp3"),
+            "A4B2A3": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B2A3.mp3"),
+            "GAME_OVER_3": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_3.mp3"),
+            "A4B4A": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B4A.mp3"),
+            "GAME_OVER_5": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_5.mp3"),
+
+            "A4B2A3B": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B2A3B.mp3"),
+            "A4B2A3BA": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B2A3BA.mp3"),
+            "GAME_OVER_7": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_7.mp3"),
 
 
             

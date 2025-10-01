@@ -54,7 +54,6 @@ class Jogo:
             "B2A2BAB": Tela(root_path / "assets/images/cenas/B2A2BAB.png", "B2A2BAB"),
             "B2A2BABA": Tela(root_path / "assets/images/cenas/B2A2BABA.png", "B2A2BABA"),
             "B2A2BAB2": Tela(root_path / "assets/images/cenas/B2A2BAB2.png", "B2A2BAB2"),
-
             "A4BA": Tela(root_path / "assets/images/cenas/A4BA.png", "A4BA"),
             "A4BA2": Tela(root_path / "assets/images/cenas/A4BA2.png", "A4BA2"),
             "A4BAB": Tela(root_path / "assets/images/cenas/A4BAB.png", "A4BAB"),
@@ -63,6 +62,21 @@ class Jogo:
             "GAME_OVER_2": Tela(root_path / "assets/images/cenas/GAME_OVER_2.png", "GAME_OVER_2"),
             "GAME_OVER_6": Tela(root_path / "assets/images/cenas/GAME_OVER_6.png", "GAME_OVER_6"),
             "MORREU": Tela(root_path / "assets/images/cenas/MORREU.png", "MORREU"),
+            "A4B2": Tela(root_path / "assets/images/cenas/A4B2.png", "A4B2"),
+            "A4B2A": Tela(root_path / "assets/images/cenas/A4B2A.png", "A4B2A"),
+            "A4B3": Tela(root_path / "assets/images/cenas/A4B3.png", "A4B3"),
+            "A4B2A2": Tela(root_path / "assets/images/cenas/A4B2A2.png", "A4B2A2"),
+            "A4B2AB": Tela(root_path / "assets/images/cenas/A4B2AB.png", "A4B2AB"),
+            "GAME_OVER_4": Tela(root_path / "assets/images/cenas/GAME_OVER_4.png", "GAME_OVER_4"),
+            "A4B4": Tela(root_path / "assets/images/cenas/A4B4.png", "A4B4"),
+            "A4B2A3": Tela(root_path / "assets/images/cenas/A4B2A3.png", "A4B2A3"),
+            "GAME_OVER_3": Tela(root_path / "assets/images/cenas/GAME_OVER_3.png", "GAME_OVER_3"),
+            "A4B4A": Tela(root_path / "assets/images/cenas/A4B4A.png", "A4B4A"),
+            "GAME_OVER_5": Tela(root_path / "assets/images/cenas/GAME_OVER_5.png", "GAME_OVER_5"),
+
+            "A4B2A3B": Tela(root_path / "assets/images/cenas/A4B2A3B.png", "A4B2A3B"),
+            "A4B2A3BA": Tela(root_path / "assets/images/cenas/A4B2A3BA.png", "A4B2A3BA"),
+            "GAME_OVER_7": Tela(root_path / "assets/images/cenas/GAME_OVER_7.png", "GAME_OVER_7"),
             
         }
         self.estados = {
@@ -108,7 +122,6 @@ class Jogo:
             "B2A2BAB": B2A2BAB(self),
             "B2A2BABA": B2A2BABA(self),
             "B2A2BAB2": B2A2BAB2(self),
-
             "A4BA": A4BA(self),
             "A4BA2": A4BA2(self),
             "A4BAB": A4BAB(self),
@@ -117,6 +130,21 @@ class Jogo:
             "GAME_OVER_2": GAME_OVER_2(self),
             "GAME_OVER_6": GAME_OVER_6(self),
             "MORREU": MORREU(self),
+            "A4B2": A4B2(self),
+            "A4B2A": A4B2A(self),
+            "A4B3": A4B3(self),
+            "A4B2A2": A4B2A2(self),
+            "A4B2AB": A4B2AB(self),
+            "GAME_OVER_4": GAME_OVER_4(self),
+            "A4B4": A4B4(self),
+            "A4B2A3": A4B2A3(self),
+            "GAME_OVER_3": GAME_OVER_3(self),
+            "A4B4A": A4B4A(self),
+            "GAME_OVER_5": GAME_OVER_5(self),
+
+            "A4B2A3B": A4B2A3B(self),
+            "A4B2A3BA": A4B2A3BA(self),
+            "GAME_OVER_7": GAME_OVER_7(self),
         }
 
         self.estado_atual_nome = "menu"

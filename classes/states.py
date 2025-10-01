@@ -624,6 +624,26 @@ class B2A2BABA(CenaBase): cena = "B2A2BABA"; cenaescolha1 = "creditos"; cenaesco
 class B2A2BAB2(CenaBase): cena = "B2A2BAB2"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
 
 
+class A4B2(CenaBase): cena = "A4B2"; cenaescolha1 = "A4B2A"; cenaescolha2 = "A4B3"
+class A4B2A(CenaBase): cena = "A4B2A"; cenaescolha1 = "A4B2A2"; cenaescolha2 = "A4B2AB"
+class A4B3(CenaBase): cena = "A4B3"; cenaescolha1 = "GAME_OVER_4"; cenaescolha2 = "A4B4"
+class A4B2A2(CenaBase): cena = "A4B2A2"; cenaescolha1 = "A4B2A3"; cenaescolha2 = "GAME_OVER_3"
+class A4B2AB(CenaBase): cena = "A4B2AB"; cenaescolha1 = "A4B2A2"; cenaescolha2 = "A4B2A3BA"
+class GAME_OVER_4(CenaBase): cena = "GAME_OVER_4"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"
+class A4B4(CenaBase): cena = "A4B4"; cenaescolha1 = "A4B4A"; cenaescolha2 = "GAME_OVER_5"
+class A4B2A3(CenaBase): cena = "A4B2A3"; cenaescolha1 = "GAME_OVER_3"; cenaescolha2 = "A4B2A3B"
+class GAME_OVER_3(CenaBase): cena = "GAME_OVER_3"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"
+class A4B4A(CenaBase): cena = "A4B4A"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos" # DEVE IR PARA A CABANA
+class GAME_OVER_5(CenaBase): cena = "GAME_OVER_5"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"
+
+
+
+class A4B2A3B(CenaBase): cena = "A4B2A3B"; cenaescolha1 = "A4B2A3BA"; cenaescolha2 = "GAME_OVER_7"
+class A4B2A3BA(CenaBase): cena = "A4B2A3BA"; cenaescolha1 = "GAME_OVER_4"; cenaescolha2 = "A4B4"
+class GAME_OVER_7(CenaBase): cena = "GAME_OVER_7"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"
+
+
+
 
 
 
