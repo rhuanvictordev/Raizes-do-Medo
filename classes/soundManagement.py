@@ -12,6 +12,7 @@ class MapeamentoDeSons:
             "musica": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_musica.mp3"),
             "musica2": pygame.mixer.Sound(root_path / "assets/sounds/menu/musica2.mp3"),
             "menu": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_menu.mp3"),
+            "continuar_erro": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_continuar_erro.mp3"),
             "config": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_configuracoes.mp3"),
             "pausa": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_pausa.mp3"),
             "config_audio": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_c_audio.mp3"),

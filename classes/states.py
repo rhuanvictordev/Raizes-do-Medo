@@ -90,7 +90,12 @@ class EstadoMenu(Estado):
                 self.jogo.sons.tocar("novo", "narrador"); time.sleep(2); pygame.event.clear(); self.jogo.sons.parar_narrador(); self.jogo.sons.parar_musica(); self.jogo.sons.tocar("musica2", "musica"); self.jogo.mudar_estado("NOVO_JOGO", 20)
             
             elif event.key == pygame.K_2:
-                self.jogo.sons.tocar_ruido(); self.jogo.mudar_estado(arquivo.getSave("tela")); self.jogo.sons.parar_musica(); self.jogo.sons.tocar_ruido()
+                salvo = arquivo.getSave("tela")
+                if (salvo != ""):
+                    self.jogo.sons.tocar_ruido(); self.jogo.mudar_estado(arquivo.getSave("tela")); self.jogo.sons.parar_musica(); self.jogo.sons.tocar_ruido()
+                else:
+                    self.jogo.sons.parar_narrador(); self.jogo.sons.tocar("continuar_erro", "narrador")
+                
             
             elif event.key == pygame.K_3:
                 self.jogo.mudar_estado("config")
@@ -134,7 +139,11 @@ class EstadoMenu(Estado):
                 self.jogo.sons.tocar("novo", "narrador"); time.sleep(2); pygame.event.clear(); self.jogo.sons.parar_narrador(); self.jogo.sons.parar_musica(); self.jogo.sons.tocar("musica2", "musica"); self.jogo.mudar_estado("NOVO_JOGO", 20)
                 
             elif botao == 1:
-                self.jogo.sons.parar_musica(); self.jogo.sons.parar_narrador(); self.jogo.mudar_estado(arquivo.getSave("tela"))
+                salvo = arquivo.getSave("tela")
+                if (salvo != ""):
+                    self.jogo.sons.tocar_ruido(); self.jogo.mudar_estado(arquivo.getSave("tela")); self.jogo.sons.parar_musica()
+                else:
+                    self.jogo.sons.parar_narrador(); self.jogo.sons.tocar("continuar_erro", "narrador")
                 
             elif botao == 2:
                 self.jogo.sons.parar_narrador(); self.jogo.mudar_estado("config")
