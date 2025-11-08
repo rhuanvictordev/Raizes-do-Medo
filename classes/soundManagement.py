@@ -12,7 +12,10 @@ class MapeamentoDeSons:
             "musica": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_musica.mp3"),
             "musica2": pygame.mixer.Sound(root_path / "assets/sounds/menu/musica2.mp3"),
             "menu": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_menu.mp3"),
-            "continuar_erro": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_continuar_erro.mp3"),
+            "continuar_erro": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_continuar_erro.mp3"),#
+            "mono_ativado": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_modo_mono_ativado.mp3"),#
+            "mono_desativado": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_modo_mono_desativado.mp3"),#
+            "audio_mono": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_ativar_desativar_mono.mp3"),#
             "config": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_configuracoes.mp3"),
             "pausa": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_pausa.mp3"),
             "config_audio": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_n_c_audio.mp3"),
@@ -104,8 +107,6 @@ class MapeamentoDeSons:
             "A4B2A3BA": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B2A3BA.mp3"),
             "GAME_OVER_7": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_7.mp3"),
 
-
-            
         }
 
         self.canais = {

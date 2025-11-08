@@ -20,4 +20,4 @@ if __name__ == "__main__":
         jogo.atualizar_tela()
         pygame.display.flip()
         clock.tick(60)
-        
+

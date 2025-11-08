@@ -385,8 +385,9 @@ class EstadoConfigAudio(Estado):
             (0.234, 0.750, 0.070, 0.113, ""), # NARRADOR +
             (0.690, 0.757, 0.070, 0.113, ""), # MUSICA - 
             (0.800, 0.757, 0.070, 0.113, ""), # MUSICA +
-            (0.469, 0.689, 0.070, 0.122, ""), # ATIVAR / DESATIVAR NARRADOR
+            (0.390, 0.669, 0.082, 0.150, ""), # ATIVAR / DESATIVAR NARRADOR
             (0.419, 0.846, 0.170, 0.070, ""), # VOLTAR
+            (0.532, 0.669, 0.085, 0.144, ""), # ATIVAR / DESATIVAR MONO
         ]
         self.jogo.telas["config_audio"].exibir(self.jogo.sons)
         self.jogo.telas["config_audio"].carregarBotoes(botoes)
@@ -412,6 +413,8 @@ class EstadoConfigAudio(Estado):
                 self.jogo.sons.ajustar_volume("musica", 0.1)
             elif event.key == pygame.K_5:
                 self.alternarNarrador()
+            elif event.key == pygame.K_6:
+                self.alternarMono()
             
         elif event.type == pygame.MOUSEMOTION:
             pos_mouse = pygame.mouse.get_pos()
@@ -437,6 +440,9 @@ class EstadoConfigAudio(Estado):
                 
             elif botao == 5 and self.pos_mouse_agora != "BT5":
                 self.jogo.sons.parar_narrador(); self.jogo.sons.tocar("voltar", "narrador"); self.pos_mouse_agora = "BT5"
+            
+            elif botao == 6 and self.pos_mouse_agora != "BT6":
+                self.jogo.sons.parar_narrador(); self.jogo.sons.tocar("audio_mono", "narrador"); self.pos_mouse_agora = "BT6"
                 
                 
 
@@ -460,6 +466,8 @@ class EstadoConfigAudio(Estado):
                 self.alternarNarrador()
             elif botao == 5:
                 self.jogo.mudar_estado("config")
+            elif botao == 6:
+                self.alternarMono()
 
     ################## ATIVAR / DESATIVAR NARRADOR
     def alternarNarrador(self):
@@ -471,6 +479,19 @@ class EstadoConfigAudio(Estado):
             arquivo.setConfig("narradorativo", "true")
             self.jogo.sons.tocar("narrador_ativado", "narrador")        
     ################### ATIVAR / DESATIVAR NARRADOR
+
+
+    ################## ATIVAR / DESATIVAR MONO
+    def alternarMono(self):
+        monoAtivo = (arquivo.getConfig("monoativo"))
+        if monoAtivo == "true":
+            arquivo.setConfig("monoativo", "false")
+            self.jogo.sons.tocar("mono_desativado", "narrador")
+        else:
+            arquivo.setConfig("monoativo", "true")
+            self.jogo.sons.tocar("mono_ativado", "narrador") 
+    ################### ATIVAR / DESATIVAR MONO
+
 
     def resetar_som(self):
         self.jogo.telas["config_audio"].resetar_som()
