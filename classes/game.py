@@ -185,7 +185,7 @@ class Jogo:
     def transicao_com_fade(self, estadoAgora, estadoNovo, tempo):
         tamanhoTela = pygame.Surface((LARGURA, ALTURA))
         
-        for alpha in range(0, 255, 100):
+        for alpha in range(0, 255, 2):
             self.telas[estadoAgora].exibir(self.sons)
             tamanhoTela.set_alpha(alpha)
             TELA.blit(tamanhoTela, (0, 0))
@@ -193,7 +193,7 @@ class Jogo:
             pygame.time.delay(tempo)
         self.telas[estadoNovo].resetar_som()
         
-        for alpha in range(255, 0, -100):
+        for alpha in range(255, 0, -2):
             self.telas[estadoNovo].exibir(self.sons)
             tamanhoTela.set_alpha(alpha)
             TELA.blit(tamanhoTela, (0, 0))
