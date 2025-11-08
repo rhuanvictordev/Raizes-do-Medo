@@ -5,11 +5,11 @@ import service.prop as arquivo
 
 pygame.init()
 info = pygame.display.Info()
-LARGURA, ALTURA = info.current_w, info.current_h
-TELA = pygame.display.set_mode((LARGURA, ALTURA), pygame.FULLSCREEN)
+#LARGURA, ALTURA = info.current_w, info.current_h
+#TELA = pygame.display.set_mode((LARGURA, ALTURA), pygame.FULLSCREEN)
 
-#LARGURA, ALTURA = 1280, 720
-#TELA = pygame.display.set_mode((LARGURA, ALTURA))
+LARGURA, ALTURA = 1280, 720
+TELA = pygame.display.set_mode((LARGURA, ALTURA))
 
 pygame.display.set_caption("Raízes do medo")
 pygame.event.set_grab(False)   # trava o mouse dentro da janela
@@ -28,14 +28,6 @@ class Tela:
         if narradorAtivado:
             if self.som_nome and not self.som_tocou:
                 sons.tocar(self.som_nome, "narrador", False)
-            self.som_tocou = True
-
-
-    def tocar_cena(self, sons: MapeamentoDeSons):
-        narradorAtivado = (arquivo.getConfig("narradorativo") == "true")
-        if narradorAtivado == False:
-            if self.som_nome and not self.som_tocou:
-                sons.tocar(self.som_nome, "cena", False)
             self.som_tocou = True
 
     def resetar_som(self):

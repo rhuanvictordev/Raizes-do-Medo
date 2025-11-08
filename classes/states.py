@@ -15,8 +15,13 @@ class CenaBase(Estado):
     cena = None; cenaescolha1 = None; cenaescolha2 = None
 
     def exibir(self):
-        botoes = [(0.026, 0.840, 0.314, 0.066, ""),(0.026, 0.923, 0.314, 0.066, ""),(0.360, 0.832, 0.625, 0.074, ""),(0.360, 0.915, 0.625, 0.074, "")]
-        self.jogo.sons.parar_musica(); self.jogo.telas[self.cena].exibir(self.jogo.sons); self.jogo.sons.tocar_ruido(); self.jogo.telas[self.cena].tocar_cena(self.jogo.sons)
+        botoes = [(0.026, 0.840, 0.314, 0.066, ""),
+                  (0.026, 0.923, 0.314, 0.066, ""),
+                  (0.360, 0.832, 0.625, 0.074, ""),
+                  (0.360, 0.915, 0.625, 0.074, "")]
+        self.jogo.sons.parar_musica()
+        self.jogo.telas[self.cena].exibir(self.jogo.sons)
+        self.jogo.sons.tocar_ruido()
         if self.cena not in ("GAME_OVER_1", "GAME_OVER_2", "GAME_OVER_3", "GAME_OVER_4", "GAME_OVER_5", "GAME_OVER_6", "GAME_OVER_7"):
             self.jogo.telas[self.cena].carregarBotoes(botoes)
             arquivo.setSave("tela", self.cena)
@@ -27,8 +32,14 @@ class CenaBase(Estado):
 
     def processar_eventos(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado("menu")
-            if event.key == pygame.K_p: self.jogo.sons.parar_narrador(); self.jogo.sons.parar_cena(); self.jogo.mudar_estado("pausa")
+            if event.key == pygame.K_ESCAPE: 
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.parar_cena()
+                self.jogo.mudar_estado("menu")
+            if event.key == pygame.K_p: 
+                self.jogo.sons.parar_narrador()
+                self.jogo.sons.parar_cena()
+                self.jogo.mudar_estado("pausa")
             
             elif event.key in (pygame.K_LCTRL, pygame.K_RCTRL):
                 self.jogo.sons.parar_narrador()
