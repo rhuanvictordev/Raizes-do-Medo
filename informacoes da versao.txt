@@ -1,0 +1,2 @@
+esta versao consegue ler o arquivo definido no sound e converter em mp3 mono, gerando um arquivo chamado temp.mp3 na pasta sounds
+

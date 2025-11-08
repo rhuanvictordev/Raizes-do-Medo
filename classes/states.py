@@ -16,12 +16,20 @@ class CenaBase(Estado):
 
     def exibir(self):
         botoes = [(0.026, 0.840, 0.314, 0.066, ""),(0.026, 0.923, 0.314, 0.066, ""),(0.360, 0.832, 0.625, 0.074, ""),(0.360, 0.915, 0.625, 0.074, "")]
-        self.jogo.sons.parar_musica(); self.jogo.telas[self.cena].exibir(self.jogo.sons); self.jogo.sons.tocar_ruido(); self.jogo.telas[self.cena].tocar_cena(self.jogo.sons)
+        
+        self.jogo.sons.parar_musica()
+        self.jogo.telas[self.cena].exibir(self.jogo.sons)
+        self.jogo.sons.tocar_ruido()
+        self.jogo.telas[self.cena].tocar_cena(self.jogo.sons)
+
         if self.cena not in ("GAME_OVER_1", "GAME_OVER_2", "GAME_OVER_3", "GAME_OVER_4", "GAME_OVER_5", "GAME_OVER_6", "GAME_OVER_7"):
+            
             self.jogo.telas[self.cena].carregarBotoes(botoes)
             arquivo.setSave("tela", self.cena)
             self.jogo.ultimaCena = self.cena
+        
         else:
+            
             arquivo.setSave("tela", self.cena)
             self.jogo.ultimaCena = self.cena
 

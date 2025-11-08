@@ -2,12 +2,20 @@ from pathlib import Path
 import pygame
 import service.prop as arquivoConfig
 
+import subprocess
+import platform
+import shutil
+import sys
+import os
+
+root_path = Path(__file__).resolve().parent.parent
 
 class MapeamentoDeSons:
+    
     def __init__(self):
-        root_path = Path(__file__).resolve().parent.parent
 
         self.sons = {
+            "som_mono": pygame.mixer.Sound(root_path / "assets/sounds/temp.mp3"),
             "ruido": pygame.mixer.Sound(root_path / "assets/sounds/menu/ruido.mp3"),
             "musica": pygame.mixer.Sound(root_path / "assets/sounds/menu/s_musica.mp3"),
             "musica2": pygame.mixer.Sound(root_path / "assets/sounds/menu/musica2.mp3"),
@@ -109,6 +117,113 @@ class MapeamentoDeSons:
 
         }
 
+
+        self.sons_arquivos = {
+    nome: caminho  # extrai o Path antes de virar Sound
+    for nome, caminho in {
+        "ruido": root_path / "assets/sounds/menu/ruido.mp3",
+        "musica": root_path / "assets/sounds/menu/s_musica.mp3",
+        "musica2": root_path / "assets/sounds/menu/musica2.mp3",
+        "menu": root_path / "assets/sounds/menu/s_n_menu.mp3",
+        "continuar_erro": root_path / "assets/sounds/menu/s_n_continuar_erro.mp3",
+        "mono_ativado": root_path / "assets/sounds/menu/s_n_modo_mono_ativado.mp3",
+        "mono_desativado": root_path / "assets/sounds/menu/s_n_modo_mono_desativado.mp3",
+        "audio_mono": root_path / "assets/sounds/menu/s_n_ativar_desativar_mono.mp3",
+        "config": root_path / "assets/sounds/menu/s_n_configuracoes.mp3",
+        "pausa": root_path / "assets/sounds/menu/s_n_pausa.mp3",
+        "config_audio": root_path / "assets/sounds/menu/s_n_c_audio.mp3",
+        "config_controle": root_path / "assets/sounds/menu/s_n_c_controles.mp3",
+        "config_controle_alterado": root_path / "assets/sounds/menu/s_n_c_alterado.mp3",
+        "config_controle_usada": root_path / "assets/sounds/menu/s_n_c_tecla_usada.mp3",
+        "config_controle_tecla1": root_path / "assets/sounds/menu/s_n_c_c_primeira.mp3",
+        "config_controle_tecla2": root_path / "assets/sounds/menu/s_n_c_c_segunda.mp3",
+        "som_creditos": root_path / "assets/sounds/menu/s_n_creditos.mp3",
+        "som_n_menos": root_path / "assets/sounds/menu/s_n_menos.mp3",
+        "som_n_mais": root_path / "assets/sounds/menu/s_n_mais.mp3",
+        "som_m_menos": root_path / "assets/sounds/menu/s_n_musica_menos.mp3",
+        "som_m_mais": root_path / "assets/sounds/menu/s_n_musica_mais.mp3",
+        "som_sair": root_path / "assets/sounds/menu/s_n_sair.mp3",
+
+        "novo": root_path / "assets/sounds/menu/novo.mp3",
+        "continuar": root_path / "assets/sounds/menu/continuar.mp3",
+        "configuracoes": root_path / "assets/sounds/menu/config.mp3",
+        "creditos": root_path / "assets/sounds/menu/creditos.mp3",
+        "sair": root_path / "assets/sounds/menu/sair.mp3",
+        "narrador_ativado": root_path / "assets/sounds/menu/narrador_ativado.mp3",
+        "narrador_desativado": root_path / "assets/sounds/menu/narrador_desativado.mp3",
+        "config_audio_rapido": root_path / "assets/sounds/menu/config_audio.mp3",
+        "config_controles": root_path / "assets/sounds/menu/config_controles.mp3",
+        "voltar": root_path / "assets/sounds/menu/voltar.mp3",
+        "diminuir_narrador": root_path / "assets/sounds/menu/diminuir_narrador.mp3",
+        "aumentar_narrador": root_path / "assets/sounds/menu/aumentar_narrador.mp3",
+        "diminuir_musica": root_path / "assets/sounds/menu/diminuir_musica.mp3",
+        "aumentar_musica": root_path / "assets/sounds/menu/aumentar_musica.mp3",
+        "ativar_desativar_narrador": root_path / "assets/sounds/menu/ativar_desativar_narrador.mp3",
+        "mudar_tecla1": root_path / "assets/sounds/menu/mudar_tecla1.mp3",
+        "mudar_tecla2": root_path / "assets/sounds/menu/mudar_tecla2.mp3",
+        "escolha1": root_path / "assets/sounds/menu/escolha1.mp3",
+        "escolha2": root_path / "assets/sounds/menu/escolha2.mp3",
+        "pausar": root_path / "assets/sounds/menu/pausar.mp3",
+        "acessar_menu_principal": root_path / "assets/sounds/menu/acessar_menu_principal.mp3",
+        "NOVO_JOGO": root_path / "assets/sounds/menu/C_INICIAL.mp3",
+        "C_ACORDAR": root_path / "assets/sounds/menu/C_ACORDAR.mp3",
+
+        # CENAS
+        "C1": root_path / "assets/sounds/cenas/C1.mp3",
+        "A": root_path / "assets/sounds/cenas/A.mp3",
+        "B": root_path / "assets/sounds/cenas/B.mp3",
+        "A2": root_path / "assets/sounds/cenas/A2.mp3",
+        "AB": root_path / "assets/sounds/cenas/AB.mp3",
+        "BA": root_path / "assets/sounds/cenas/BA.mp3",
+        "B2": root_path / "assets/sounds/cenas/B2.mp3",
+        "A3": root_path / "assets/sounds/cenas/A3.mp3",
+        "A2B": root_path / "assets/sounds/cenas/A2B.mp3",
+        "ABA": root_path / "assets/sounds/cenas/ABA.mp3",
+        "B2A": root_path / "assets/sounds/cenas/B2A.mp3",
+        "B3": root_path / "assets/sounds/cenas/B3.mp3",
+        "A3B": root_path / "assets/sounds/cenas/A3B.mp3",
+        "A4": root_path / "assets/sounds/cenas/A4.mp3",
+        "A4B": root_path / "assets/sounds/cenas/A4B.mp3",
+        "A5": root_path / "assets/sounds/cenas/A5.mp3",
+        "A6": root_path / "assets/sounds/cenas/A6.mp3",
+        "BA2": root_path / "assets/sounds/cenas/BA2.mp3",
+        "BA3": root_path / "assets/sounds/cenas/BA3.mp3",
+        "B2A2": root_path / "assets/sounds/cenas/B2A2.mp3",
+        "B2A3": root_path / "assets/sounds/cenas/B2A3.mp3",
+        "B2A2B": root_path / "assets/sounds/cenas/B2A2B.mp3",
+        "B3A": root_path / "assets/sounds/cenas/B3A.mp3",
+        "B2A2BA": root_path / "assets/sounds/cenas/B2A2BA.mp3",
+        "B2A2BAB": root_path / "assets/sounds/cenas/B2A2BAB.mp3",
+        "B2A2BABA": root_path / "assets/sounds/cenas/B2A2BABA.mp3",
+        "B2A2BAB2": root_path / "assets/sounds/cenas/B2A2BAB2.mp3",
+        "A4BA": root_path / "assets/sounds/cenas/A4BA.mp3",
+        "A4BA2": root_path / "assets/sounds/cenas/A4BA2.mp3",
+        "A4BAB": root_path / "assets/sounds/cenas/A4BAB.mp3",
+        "A4BAB2": root_path / "assets/sounds/cenas/A4BAB2.mp3",
+        "GAME_OVER_1": root_path / "assets/sounds/cenas/GAME_OVER_1.mp3",
+        "GAME_OVER_2": root_path / "assets/sounds/cenas/GAME_OVER_2.mp3",
+        "GAME_OVER_6": root_path / "assets/sounds/cenas/GAME_OVER_6.mp3",
+        "MORREU": root_path / "assets/sounds/cenas/MORREU.mp3",
+        "A4B2": root_path / "assets/sounds/cenas/A4B2.mp3",
+        "A4B2A": root_path / "assets/sounds/cenas/A4B2A.mp3",
+        "A4B3": root_path / "assets/sounds/cenas/A4B3.mp3",
+        "A4B2A2": root_path / "assets/sounds/cenas/A4B2A2.mp3",
+        "A4B2AB": root_path / "assets/sounds/cenas/A4B2AB.mp3",
+        "GAME_OVER_4": root_path / "assets/sounds/cenas/GAME_OVER_4.mp3",
+        "A4B4": root_path / "assets/sounds/cenas/A4B4.mp3",
+        "A4B2A3": root_path / "assets/sounds/cenas/A4B2A3.mp3",
+        "GAME_OVER_3": root_path / "assets/sounds/cenas/GAME_OVER_3.mp3",
+        "A4B4A": root_path / "assets/sounds/cenas/A4B4A.mp3",
+        "GAME_OVER_5": root_path / "assets/sounds/cenas/GAME_OVER_5.mp3",
+
+        "A4B2A3B": root_path / "assets/sounds/cenas/A4B2A3B.mp3",
+        "A4B2A3BA": root_path / "assets/sounds/cenas/A4B2A3BA.mp3",
+        "GAME_OVER_7": root_path / "assets/sounds/cenas/GAME_OVER_7.mp3",
+    }.items()
+}
+
+
+
         self.canais = {
             "musica": pygame.mixer.Channel(0),
             "narrador": pygame.mixer.Channel(1),
@@ -120,6 +235,17 @@ class MapeamentoDeSons:
             "musica": float(arquivoConfig.getConfig("musica")),
             "narrador": float(arquivoConfig.getConfig("narrador"))
         }
+    
+    def encontrar_ffmpeg(self):
+        caminho = shutil.which("ffmpeg")
+
+        if caminho:
+            return caminho
+
+        if platform.system().lower().startswith("win"):
+            caminho = shutil.which("ffmpeg.exe")
+            if caminho:
+                return caminho
 
 
     def tocar(self, nome_som, canal, loop=False):
@@ -127,10 +253,34 @@ class MapeamentoDeSons:
             if canal == "narrador" and arquivoConfig.getConfig("narradorativo") == "false":
                 return
             else:
-                loops = -1 if loop else 0
-                self.canais[canal].play(self.sons[nome_som], loops=loops)
-                vol = self.volumes.get(canal, 1.0)
-                self.canais[canal].set_volume(vol)
+                monoativo = arquivoConfig.getConfig("monoativo")
+                if(monoativo == "true"):
+                    #print ("tocando em mono",nome_som, canal)
+                    entrada = self.sons_arquivos.get(nome_som)
+                    nome_som = "som_mono"
+                    saida = (root_path / "assets/sounds/temp.mp3")
+                    #print("CAMINHO DO ARQUIVO DE ENTRADA:",entrada)
+                    ffmpeg_bin = self.encontrar_ffmpeg()
+                    
+                    if not ffmpeg_bin:
+                        print("EXCECAO LANCADA: FFMPEG NAO INSTALADO NO SISTEMA OPERACIONAL, SAINDO DO JOGO")
+                        sys.exit()
+                    
+                    cmd = [ffmpeg_bin,"-y","-i", str(entrada),"-ac", "1",str(saida)]
+                    try:subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    except subprocess.CalledProcessError as e: print("excecao lancada no ffmpeg, nao foi possivel converter o audio"); return
+                    audio_mono = pygame.mixer.Sound(root_path / "assets/sounds/temp.mp3")
+                    
+                    loops = -1 if loop else 0
+                    self.canais[canal].play(audio_mono, loops=loops)
+                    vol = self.volumes.get(canal, 1.0)
+                    self.canais[canal].set_volume(vol)
+                else:
+                    #print ("tocando em stereo")
+                    loops = -1 if loop else 0
+                    self.canais[canal].play(self.sons[nome_som], loops=loops)
+                    vol = self.volumes.get(canal, 1.0)
+                    self.canais[canal].set_volume(vol)
 
     def tocar_ruido(self, loop=True):
         if not self.canais["ruido"].get_busy():

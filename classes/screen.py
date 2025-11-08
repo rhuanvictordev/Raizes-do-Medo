@@ -32,9 +32,9 @@ class Tela:
 
 
     def tocar_cena(self, sons: MapeamentoDeSons):
-        narradorAtivado = (arquivo.getConfig("narradorativo") == "true")
-        if narradorAtivado == False:
+        if arquivo.getConfig("narradorativo") == "false":
             if self.som_nome and not self.som_tocou:
+                print("tocando cena do jogo porque o narrador esta inativo")
                 sons.tocar(self.som_nome, "cena", False)
             self.som_tocou = True
 
@@ -51,9 +51,9 @@ class Tela:
             rect = pygame.Rect(percentualDaEsquerda * LARGURA, percentualDaDireita * ALTURA, percentualLargura* LARGURA, percentualAltura * ALTURA)
             if rect.collidepoint(pos_mouse):
                 cursor_hover = True
-                cor = (200, 200, 200, 200) # debug (200, 200, 200, 200) nao debug (0, 0, 0, 100)
+                cor = (0, 0, 0, 100) # debug (200, 200, 200, 200) nao debug (0, 0, 0, 100)
             else:
-                cor = (100, 100, 100, 100) # debug (100, 100, 100, 100) nao debug (0, 0, 0, 0)
+                cor = (0, 0, 0, 0) # debug (100, 100, 100, 100) nao debug (0, 0, 0, 0)
 
             overlay = pygame.Surface((rect.width, rect.height), pygame.SRCALPHA)
             overlay.fill(cor)
