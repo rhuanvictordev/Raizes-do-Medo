@@ -26,7 +26,6 @@ class Jogo:
             ## CENAS
             "NOVO_JOGO": Tela(caminho / "assets/images/menu/C_INICIAL.png", "NOVO_JOGO"),
             "C_ACORDAR": Tela(caminho / "assets/images/menu/C_ACORDAR.png", "C_ACORDAR"),
-
             "C1": Tela(caminho / "assets/images/cenas/C1.png", "C1"),
             "A": Tela(caminho / "assets/images/cenas/A.png", "A"),
             "B": Tela(caminho / "assets/images/cenas/B.png", "B"),
@@ -73,10 +72,18 @@ class Jogo:
             "GAME_OVER_3": Tela(caminho / "assets/images/cenas/GAME_OVER_3.png", "GAME_OVER_3"),
             "A4B4A": Tela(caminho / "assets/images/cenas/A4B4A.png", "A4B4A"),
             "GAME_OVER_5": Tela(caminho / "assets/images/cenas/GAME_OVER_5.png", "GAME_OVER_5"),
-
             "A4B2A3B": Tela(caminho / "assets/images/cenas/A4B2A3B.png", "A4B2A3B"),
             "A4B2A3BA": Tela(caminho / "assets/images/cenas/A4B2A3BA.png", "A4B2A3BA"),
             "GAME_OVER_7": Tela(caminho / "assets/images/cenas/GAME_OVER_7.png", "GAME_OVER_7"),
+            "A4B4A2": Tela(caminho / "assets/images/cenas/A4B4A2.png", "A4B4A2"),
+            "A4B4AB": Tela(caminho / "assets/images/cenas/A4B4AB.png", "A4B4AB"),
+            "FIM": Tela(caminho / "assets/images/cenas/FIM.png", "FIM"),
+            "GAME_OVER_8": Tela(caminho / "assets/images/cenas/GAME_OVER_8.png", "GAME_OVER_8"),
+            "GAME_OVER_9": Tela(caminho / "assets/images/cenas/GAME_OVER_9.png", "GAME_OVER_9"),
+            "CONTINUA": Tela(caminho / "assets/images/cenas/CONTINUA.png", "CONTINUA"),
+            "GAME_OVER_11": Tela(caminho / "assets/images/cenas/GAME_OVER_11.png", "GAME_OVER_11"),
+            "GAME_OVER_10": Tela(caminho / "assets/images/cenas/GAME_OVER_10.png", "GAME_OVER_10"),
+            "FIM_2": Tela(caminho / "assets/images/cenas/FIM_2.png", "FIM_2"),
         }
 
         self.estado_atual_nome = "menu"
@@ -143,10 +150,18 @@ class Jogo:
             "GAME_OVER_3": GAME_OVER_3(self),
             "A4B4A": A4B4A(self),
             "GAME_OVER_5": GAME_OVER_5(self),
-
             "A4B2A3B": A4B2A3B(self),
             "A4B2A3BA": A4B2A3BA(self),
             "GAME_OVER_7": GAME_OVER_7(self),
+            "A4B4A2": A4B4A2(self),
+            "A4B4AB": A4B4AB(self),
+            "FIM": FIM(self),
+            "GAME_OVER_8": GAME_OVER_8(self),
+            "GAME_OVER_9": GAME_OVER_9(self),
+            "CONTINUA": CONTINUA(self),
+            "GAME_OVER_11": GAME_OVER_11(self),
+            "GAME_OVER_10": GAME_OVER_10(self),
+            "FIM_2": FIM_2(self),
         }
         
         

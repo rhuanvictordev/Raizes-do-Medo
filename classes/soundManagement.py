@@ -110,11 +110,18 @@ class MapeamentoDeSons:
             "GAME_OVER_3": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_3.mp3"),
             "A4B4A": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B4A.mp3"),
             "GAME_OVER_5": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_5.mp3"),
-
             "A4B2A3B": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B2A3B.mp3"),
             "A4B2A3BA": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B2A3BA.mp3"),
             "GAME_OVER_7": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_7.mp3"),
-
+            "A4B4A2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B4A2.mp3"),
+            "A4B4AB": pygame.mixer.Sound(root_path / "assets/sounds/cenas/A4B4AB.mp3"),
+            "FIM": pygame.mixer.Sound(root_path / "assets/sounds/cenas/FIM.mp3"),
+            "GAME_OVER_8": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_8.mp3"),
+            "GAME_OVER_9": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_9.mp3"),
+            "CONTINUA": pygame.mixer.Sound(root_path / "assets/sounds/cenas/CONTINUA.mp3"),
+            "GAME_OVER_11": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_11.mp3"),
+            "GAME_OVER_10": pygame.mixer.Sound(root_path / "assets/sounds/cenas/GAME_OVER_10.mp3"),
+            "FIM_2": pygame.mixer.Sound(root_path / "assets/sounds/cenas/FIM_2.mp3"),
         }
 
 
@@ -215,10 +222,19 @@ class MapeamentoDeSons:
         "GAME_OVER_3": root_path / "assets/sounds/cenas/GAME_OVER_3.mp3",
         "A4B4A": root_path / "assets/sounds/cenas/A4B4A.mp3",
         "GAME_OVER_5": root_path / "assets/sounds/cenas/GAME_OVER_5.mp3",
-
         "A4B2A3B": root_path / "assets/sounds/cenas/A4B2A3B.mp3",
         "A4B2A3BA": root_path / "assets/sounds/cenas/A4B2A3BA.mp3",
         "GAME_OVER_7": root_path / "assets/sounds/cenas/GAME_OVER_7.mp3",
+        "A4B4A2": root_path / "assets/sounds/cenas/A4B4A2.mp3",
+        "A4B4AB": root_path / "assets/sounds/cenas/A4B4AB.mp3",
+        "FIM": root_path / "assets/sounds/cenas/FIM.mp3",
+        "GAME_OVER_8": root_path / "assets/sounds/cenas/GAME_OVER_8.mp3",
+        "GAME_OVER_9": root_path / "assets/sounds/cenas/GAME_OVER_9.mp3",
+        "CONTINUA": root_path / "assets/sounds/cenas/CONTINUA.mp3",
+        "GAME_OVER_11": root_path / "assets/sounds/cenas/GAME_OVER_11.mp3",
+        "GAME_OVER_10": root_path / "assets/sounds/cenas/GAME_OVER_10.mp3",
+        "FIM_2": root_path / "assets/sounds/cenas/FIM_2.mp3",
+
     }.items()
 }
 

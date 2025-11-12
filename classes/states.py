@@ -22,7 +22,7 @@ class CenaBase(Estado):
         self.jogo.sons.tocar_ruido()
         self.jogo.telas[self.cena].tocar_cena(self.jogo.sons)
 
-        if self.cena not in ("GAME_OVER_1", "GAME_OVER_2", "GAME_OVER_3", "GAME_OVER_4", "GAME_OVER_5", "GAME_OVER_6", "GAME_OVER_7"):
+        if self.cena not in ("GAME_OVER_1", "GAME_OVER_2", "GAME_OVER_3", "GAME_OVER_4", "GAME_OVER_5", "GAME_OVER_6", "GAME_OVER_7", "GAME_OVER_8", "GAME_OVER_9", "GAME_OVER_10", "GAME_OVER_11"):
             
             self.jogo.telas[self.cena].carregarBotoes(botoes)
             arquivo.setSave("tela", self.cena)
@@ -698,31 +698,32 @@ class A4BAB2(CenaBase): cena = "A4BAB2"; cenaescolha1 = "GAME_OVER_3"; cenaescol
 class GAME_OVER_1(CenaBase): cena = "GAME_OVER_1"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"  # OK
 class GAME_OVER_2(CenaBase): cena = "GAME_OVER_2"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"  # OK
 class GAME_OVER_6(CenaBase): cena = "GAME_OVER_6"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"  # OK
+class B2A2BABA(CenaBase): cena = "B2A2BABA"; cenaescolha1 = "GAME_OVER_11"; cenaescolha2 = "GAME_OVER_10"# OK
+class B2A2BAB2(CenaBase): cena = "B2A2BAB2"; cenaescolha1 = "GAME_OVER_11"; cenaescolha2 = "FIM_2"# OK
+class A4B2(CenaBase): cena = "A4B2"; cenaescolha1 = "A4B2A"; cenaescolha2 = "A4B3"# OK
+class A4B2A(CenaBase): cena = "A4B2A"; cenaescolha1 = "A4B2A2"; cenaescolha2 = "A4B2AB"# OK
+class A4B3(CenaBase): cena = "A4B3"; cenaescolha1 = "GAME_OVER_4"; cenaescolha2 = "A4B4"# OK
+class A4B2A2(CenaBase): cena = "A4B2A2"; cenaescolha1 = "A4B2A3"; cenaescolha2 = "GAME_OVER_3"# OK
+class A4B2AB(CenaBase): cena = "A4B2AB"; cenaescolha1 = "A4B2A2"; cenaescolha2 = "A4B2A3BA"# OK
+class GAME_OVER_4(CenaBase): cena = "GAME_OVER_4"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"# OK
+class A4B4(CenaBase): cena = "A4B4"; cenaescolha1 = "A4B4A"; cenaescolha2 = "GAME_OVER_5"# OK
+class A4B2A3(CenaBase): cena = "A4B2A3"; cenaescolha1 = "GAME_OVER_3"; cenaescolha2 = "A4B2A3B"# OK
+class GAME_OVER_3(CenaBase): cena = "GAME_OVER_3"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"# OK
+class A4B4A(CenaBase): cena = "A4B4A"; cenaescolha1 = "A4B4A2"; cenaescolha2 = "A4B4AB" # OK
+class GAME_OVER_5(CenaBase): cena = "GAME_OVER_5"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"# OK
+class A4B2A3B(CenaBase): cena = "A4B2A3B"; cenaescolha1 = "A4B2A3BA"; cenaescolha2 = "GAME_OVER_7"# OK
+class A4B2A3BA(CenaBase): cena = "A4B2A3BA"; cenaescolha1 = "GAME_OVER_4"; cenaescolha2 = "A4B4"# OK
+class GAME_OVER_7(CenaBase): cena = "GAME_OVER_7"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"# OK
+class A4B4A2(CenaBase): cena = "A4B4A2"; cenaescolha1 = "FIM"; cenaescolha2 = "GAME_OVER_8"# OK
+class A4B4AB(CenaBase): cena = "A4B4AB"; cenaescolha1 = "FIM"; cenaescolha2 = "GAME_OVER_9"# OK
+class FIM(CenaBase): cena = "FIM"; cenaescolha1 = "CONTINUA"; cenaescolha2 = "CONTINUA" # OK
+class GAME_OVER_8(CenaBase): cena = "GAME_OVER_8"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU" # OK
+class GAME_OVER_9(CenaBase): cena = "GAME_OVER_9"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU" # OK
+class GAME_OVER_11(CenaBase): cena = "GAME_OVER_11"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU" # OK
+class GAME_OVER_10(CenaBase): cena = "GAME_OVER_10"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU" # OK
+class FIM_2(CenaBase): cena = "FIM_2"; cenaescolha1 = "CONTINUA"; cenaescolha2 = "CONTINUA"# OK
 
-
-class B2A2BABA(CenaBase): cena = "B2A2BABA"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
-class B2A2BAB2(CenaBase): cena = "B2A2BAB2"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"
-
-
-class A4B2(CenaBase): cena = "A4B2"; cenaescolha1 = "A4B2A"; cenaescolha2 = "A4B3"
-class A4B2A(CenaBase): cena = "A4B2A"; cenaescolha1 = "A4B2A2"; cenaescolha2 = "A4B2AB"
-class A4B3(CenaBase): cena = "A4B3"; cenaescolha1 = "GAME_OVER_4"; cenaescolha2 = "A4B4"
-class A4B2A2(CenaBase): cena = "A4B2A2"; cenaescolha1 = "A4B2A3"; cenaescolha2 = "GAME_OVER_3"
-class A4B2AB(CenaBase): cena = "A4B2AB"; cenaescolha1 = "A4B2A2"; cenaescolha2 = "A4B2A3BA"
-class GAME_OVER_4(CenaBase): cena = "GAME_OVER_4"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"
-class A4B4(CenaBase): cena = "A4B4"; cenaescolha1 = "A4B4A"; cenaescolha2 = "GAME_OVER_5"
-class A4B2A3(CenaBase): cena = "A4B2A3"; cenaescolha1 = "GAME_OVER_3"; cenaescolha2 = "A4B2A3B"
-class GAME_OVER_3(CenaBase): cena = "GAME_OVER_3"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"
-class A4B4A(CenaBase): cena = "A4B4A"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos" # DEVE IR PARA A CABANA
-class GAME_OVER_5(CenaBase): cena = "GAME_OVER_5"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"
-
-
-
-class A4B2A3B(CenaBase): cena = "A4B2A3B"; cenaescolha1 = "A4B2A3BA"; cenaescolha2 = "GAME_OVER_7"
-class A4B2A3BA(CenaBase): cena = "A4B2A3BA"; cenaescolha1 = "GAME_OVER_4"; cenaescolha2 = "A4B4"
-class GAME_OVER_7(CenaBase): cena = "GAME_OVER_7"; cenaescolha1 = "MORREU"; cenaescolha2 = "MORREU"
-
-
+class CONTINUA(CenaBase): cena = "CONTINUA"; cenaescolha1 = "creditos"; cenaescolha2 = "creditos"# OK
 
 
 
